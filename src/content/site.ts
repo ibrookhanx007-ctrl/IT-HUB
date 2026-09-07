@@ -28,4 +28,16 @@ export const siteConfig: SiteConfig = {
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
+  primaryCta: {
+    label: "Get a Quote",
+    href: "/contact",
+  },
+  footer: {
+    columns: {
+      services: "Services",
+      quickLinks: "Quick Links",
+      contact: "Contact",
+    },
+    copyrightSuffix: "All rights reserved.",
+  },
 };

@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function DesignSystemPage() {
   return (
-    <main>
+    <div>
       <Section className="pb-0">
         <h1 className="text-h1">Design System</h1>
         <p className="text-body mt-4">
@@ -190,6 +190,6 @@ export default function DesignSystemPage() {
           <ToastDemoButton />
         </div>
       </Section>
-    </main>
+    </div>
   );
 }

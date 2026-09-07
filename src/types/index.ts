@@ -21,6 +21,20 @@ export interface ContactInfo {
   email: string;
 }
 
+export interface CtaLink {
+  label: string;
+  href: string;
+}
+
+export interface FooterContent {
+  columns: {
+    services: string;
+    quickLinks: string;
+    contact: string;
+  };
+  copyrightSuffix: string;
+}
+
 export interface SiteConfig {
   name: string;
   tagline: string;
@@ -29,6 +43,8 @@ export interface SiteConfig {
   contact: ContactInfo;
   social: SocialLink[];
   nav: NavItem[];
+  primaryCta: CtaLink;
+  footer: FooterContent;
 }
 
 export interface ServiceSeo {
