@@ -1,23 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Design tokens for IT HUB Corporation.
+ * Everything inside `@theme` is exposed as a Tailwind utility by
+ * Tailwind v4's CSS-first theme (`--color-navy-900` becomes
+ * `bg-navy-900` / `text-navy-900` / `border-navy-900`, etc).
+ * Components must use these utilities instead of arbitrary values
+ * (see AGENTS.md rule 2).
+ */
+@theme {
+  /* Navy scale — background, surface, elevated surface, border */
+  --color-navy-900: #0a1120; /* page background */
+  --color-navy-800: #111a2e; /* card / section surface */
+  --color-navy-700: #16233d; /* elevated surface (modals, popovers) */
+  --color-navy-600: #2a3b54; /* borders / dividers */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
+  /* Gold accent scale — base, hover, muted */
+  --color-gold: #c9a961; /* primary accent */
+  --color-gold-hover: #b4903f; /* hover / active state, deeper */
+  --color-gold-muted: #8a7440; /* subtle accents, badges, icons */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Text scale — contrast-checked (WCAG AA) against --color-navy-900 */
+  --color-ink-primary: #f5f7fa; /* ~17.6:1 on navy-900 */
+  --color-ink-secondary: #b7c0d1; /* ~10.3:1 on navy-900 */
+  --color-ink-muted: #8792a6; /* ~6.0:1 on navy-900 */
+
+  /* Semantic tokens */
+  --color-success: #34d399;
+  --color-error: #f87171;
+  --color-warning: #fb923c;
+
+  /* next/font sets --font-heading-sans / --font-body-sans on <html>
+     (see layout.tsx); alias them to the semantic names below so
+     components use `font-heading` / `font-body`. */
+  --font-heading: var(--font-heading-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-navy-900);
+  color: var(--color-ink-primary);
+}
+
+/* Type scale — h1 through h4, body, small. Use these classes instead of
+   ad-hoc text-size/weight/leading combinations. */
+@layer components {
+  .text-h1 {
+    @apply font-heading text-5xl leading-tight font-bold tracking-tight text-ink-primary md:text-6xl;
+  }
+  .text-h2 {
+    @apply font-heading text-4xl leading-tight font-bold tracking-tight text-ink-primary md:text-5xl;
+  }
+  .text-h3 {
+    @apply font-heading text-2xl leading-snug font-semibold text-ink-primary md:text-3xl;
+  }
+  .text-h4 {
+    @apply font-heading text-xl leading-snug font-semibold text-ink-primary md:text-2xl;
+  }
+  .text-body {
+    @apply font-body text-base leading-relaxed text-ink-secondary;
+  }
+  .text-small {
+    @apply font-body text-sm leading-normal text-ink-secondary;
+  }
 }
