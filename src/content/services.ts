@@ -20,7 +20,7 @@ export const services: Service[] = [
     ],
     icon: "Code",
     seo: {
-      title: "IT & Software Solutions | IT HUB Corporation",
+      title: "IT & Software Solutions",
       description:
         "Custom software, IT infrastructure, and technical support for businesses in Pakistan.",
       keywords: [
@@ -50,7 +50,7 @@ export const services: Service[] = [
     ],
     icon: "Calculator",
     seo: {
-      title: "Tax & Accounting Services | IT HUB Corporation",
+      title: "Tax & Accounting Services",
       description:
         "Monthly bookkeeping, sales tax, and income tax filing for businesses in Pakistan.",
       keywords: [
@@ -80,7 +80,7 @@ export const services: Service[] = [
     ],
     icon: "Building2",
     seo: {
-      title: "Business Registration Services | IT HUB Corporation",
+      title: "Business Registration Services",
       description:
         "SECP incorporation, NTN registration, and trade licensing for new businesses in Pakistan.",
       keywords: [
@@ -110,7 +110,7 @@ export const services: Service[] = [
     ],
     icon: "Megaphone",
     seo: {
-      title: "Digital Marketing Services | IT HUB Corporation",
+      title: "Digital Marketing Services",
       description:
         "Social media, paid ads, and SEO campaigns built to generate leads for businesses in Pakistan.",
       keywords: [
@@ -140,7 +140,7 @@ export const services: Service[] = [
     ],
     icon: "PenTool",
     seo: {
-      title: "Graphic Design & Branding | IT HUB Corporation",
+      title: "Graphic Design & Branding",
       description:
         "Logo design, brand identity, and print materials for businesses in Pakistan.",
       keywords: [
@@ -170,7 +170,7 @@ export const services: Service[] = [
     ],
     icon: "ShoppingCart",
     seo: {
-      title: "E-Commerce Solutions | IT HUB Corporation",
+      title: "E-Commerce Solutions",
       description:
         "Online store setup with local payment gateway and inventory integration for Pakistani businesses.",
       keywords: [
@@ -200,7 +200,7 @@ export const services: Service[] = [
     ],
     icon: "Receipt",
     seo: {
-      title: "POS & Invoicing Systems | IT HUB Corporation",
+      title: "POS & Invoicing Systems",
       description:
         "Point-of-sale and FBR-compliant invoicing systems for retail and service businesses in Pakistan.",
       keywords: [
@@ -230,7 +230,7 @@ export const services: Service[] = [
     ],
     icon: "ShieldCheck",
     seo: {
-      title: "FBR & KPRA Compliance Services | IT HUB Corporation",
+      title: "FBR & KPRA Compliance Services",
       description:
         "FBR and KPRA registration, return filing, and notice handling for businesses in Khyber Pakhtunkhwa.",
       keywords: [
@@ -260,7 +260,7 @@ export const services: Service[] = [
     ],
     icon: "ChartLine",
     seo: {
-      title: "Accounting & Financial Services | IT HUB Corporation",
+      title: "Accounting & Financial Services",
       description:
         "Financial statements, audit coordination, payroll, and management reporting for businesses in Pakistan.",
       keywords: [
@@ -290,7 +290,7 @@ export const services: Service[] = [
     ],
     icon: "Scale",
     seo: {
-      title: "Tax Appeals & Legal Support | IT HUB Corporation",
+      title: "Tax Appeals & Legal Support",
       description:
         "Representation for FBR and KPRA tax appeals, show-cause notices, and legal documentation.",
       keywords: [

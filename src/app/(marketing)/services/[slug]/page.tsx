@@ -4,8 +4,10 @@ import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 
 import { services } from "@/content/services";
+import { getServiceSchema } from "@/lib/structured-data";
 import { Section } from "@/components/ui/section";
 import { Icon } from "@/components/ui/icon";
+import { JsonLd } from "@/components/ui/json-ld";
 import {
   Card,
   CardHeader,
@@ -32,6 +34,7 @@ export async function generateMetadata(
     title: service.seo.title,
     description: service.seo.description,
     keywords: service.seo.keywords,
+    alternates: { canonical: `/services/${service.slug}` },
   };
 }
 
@@ -55,6 +58,8 @@ export default async function ServiceDetailPage(
 
   return (
     <>
+      <JsonLd data={getServiceSchema(service)} />
+
       <Section className="flex flex-col gap-6 pb-0">
         <Icon
           name={service.icon}

@@ -2,7 +2,7 @@ import type { AboutContent } from "@/types";
 
 export const aboutContent: AboutContent = {
   seo: {
-    title: "About Us | IT HUB Corporation",
+    title: "About Us",
     description:
       "IT HUB Corporation is a Mardan-based team handling IT, tax, and business services for companies across Khyber Pakhtunkhwa and Pakistan.",
   },

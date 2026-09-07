@@ -6,6 +6,19 @@ export const siteConfig: SiteConfig = {
   slogan: "Built for Your Growth",
   description:
     "IT HUB Corporation delivers IT, tax, accounting, and business services to companies across Pakistan, combining technical expertise with hands-on compliance support.",
+  // TODO: Replace with the real production domain once deployed (see
+  // Prompt 13 / deployment docs). example.com is IANA's reserved
+  // placeholder domain, so it's safe to ship until then.
+  url: "https://example.com",
+  keywords: [
+    "IT HUB Corporation",
+    "IT services Pakistan",
+    "tax consultant Mardan",
+    "business registration Pakistan",
+    "FBR KPRA compliance",
+    "digital marketing Khyber Pakhtunkhwa",
+    "accounting services Pakistan",
+  ],
   contact: {
     address: {
       line1: "TODO: Add office street address",

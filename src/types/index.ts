@@ -42,6 +42,11 @@ export interface SiteConfig {
   tagline: string;
   slogan: string;
   description: string;
+  /** Production origin, no trailing slash — used for metadataBase, the
+   *  sitemap, robots.txt, and JSON-LD. */
+  url: string;
+  /** Site-wide default SEO keywords (root layout metadata). */
+  keywords: string[];
   contact: ContactInfo;
   social: SocialLink[];
   nav: NavItem[];
@@ -124,6 +129,13 @@ export interface AboutContent {
     heading: string;
     items: AboutValue[];
   };
+}
+
+export interface NotFoundContent {
+  heading: string;
+  description: string;
+  homeCta: CtaLink;
+  servicesCta: CtaLink;
 }
 
 export interface HomeContent {

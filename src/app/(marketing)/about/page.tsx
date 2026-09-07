@@ -5,10 +5,13 @@ import { Section } from "@/components/ui/section";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { CtaBand } from "@/components/sections/cta-band";
 
-export const metadata: Metadata = {
-  title: aboutContent.seo.title,
-  description: aboutContent.seo.description,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: aboutContent.seo.title,
+    description: aboutContent.seo.description,
+    alternates: { canonical: "/about" },
+  };
+}
 
 export default function AboutPage() {
   return (

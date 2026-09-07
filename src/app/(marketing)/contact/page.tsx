@@ -6,10 +6,13 @@ import { Section } from "@/components/ui/section";
 import { ContactForm } from "@/components/sections/contact-form";
 import { OfficeMap } from "@/components/sections/office-map";
 
-export const metadata: Metadata = {
-  title: contactPageIntro.seo.title,
-  description: contactPageIntro.seo.description,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: contactPageIntro.seo.title,
+    description: contactPageIntro.seo.description,
+    alternates: { canonical: "/contact" },
+  };
+}
 
 export default function ContactPage() {
   const { address, phone, email, hours } = siteConfig.contact;

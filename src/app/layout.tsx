@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Sora, Inter } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/content/site";
+import { getOrganizationSchema } from "@/lib/structured-data";
 import { Toaster } from "@/components/ui/sonner";
+import { JsonLd } from "@/components/ui/json-ld";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
@@ -20,8 +23,29 @@ const bodySans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "IT HUB Corporation",
-  description: "IT HUB Corporation",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} — ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "en_PK",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -31,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${headingSans.variable} ${bodySans.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-navy-900 font-body text-ink-primary antialiased">
+        <JsonLd data={getOrganizationSchema()} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

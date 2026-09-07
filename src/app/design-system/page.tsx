@@ -42,10 +42,12 @@ import {
 // Private page: not linked from navigation, not indexed. Renders the
 // full design system (colors, type scale, spacing, UI primitives) for
 // visual review.
-export const metadata: Metadata = {
-  title: "Design System — IT HUB Corporation",
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Design System",
+    robots: { index: false, follow: false },
+  };
+}
 
 export default function DesignSystemPage() {
   return (
