@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 // Confident, geometric sans for headings.
 const headingSans = Sora({
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-navy-900 font-body text-ink-primary antialiased">
         {children}
+        <Toaster />
       </body>
     </html>
   );

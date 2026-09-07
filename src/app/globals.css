@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 /*
  * Design tokens for IT HUB Corporation.
@@ -7,6 +11,13 @@
  * `bg-navy-900` / `text-navy-900` / `border-navy-900`, etc).
  * Components must use these utilities instead of arbitrary values
  * (see AGENTS.md rule 2).
+ *
+ * The site has a single fixed dark-navy brand theme (no light/dark
+ * toggle), so shadcn/ui's semantic slots (--color-background,
+ * --color-primary, etc. — what its components are built against) are
+ * aliased directly to our brand tokens below instead of shadcn's
+ * default oklch palette. This is what makes `npx shadcn add <x>`
+ * output the right colors with no further edits.
  */
 @theme {
   /* Navy scale — background, surface, elevated surface, border */
@@ -33,8 +44,36 @@
   /* next/font sets --font-heading-sans / --font-body-sans on <html>
      (see layout.tsx); alias them to the semantic names below so
      components use `font-heading` / `font-body`. */
-  --font-heading: var(--font-heading-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading:
+    var(--font-heading-sans), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-body-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* shadcn/ui semantic slots — aliased to brand tokens above. */
+  --color-background: var(--color-navy-900);
+  --color-foreground: var(--color-ink-primary);
+  --color-card: var(--color-navy-800);
+  --color-card-foreground: var(--color-ink-primary);
+  --color-popover: var(--color-navy-700);
+  --color-popover-foreground: var(--color-ink-primary);
+  --color-primary: var(--color-gold);
+  --color-primary-foreground: var(--color-navy-900);
+  --color-secondary: var(--color-navy-700);
+  --color-secondary-foreground: var(--color-ink-primary);
+  --color-muted: var(--color-navy-800);
+  --color-muted-foreground: var(--color-ink-muted);
+  --color-accent: var(--color-navy-700);
+  --color-accent-foreground: var(--color-ink-primary);
+  --color-destructive: var(--color-error);
+  --color-destructive-foreground: var(--color-ink-primary);
+  --color-border: var(--color-navy-600);
+  --color-input: var(--color-navy-600);
+  --color-ring: var(--color-gold);
+
+  --radius: 0.5rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 body {
@@ -62,5 +101,11 @@ body {
   }
   .text-small {
     @apply font-body text-sm leading-normal text-ink-secondary;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
 }

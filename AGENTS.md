@@ -28,6 +28,15 @@ marketing/lead-generation site: no user accounts, no database.
   (`eslint-config-prettier` 10.1.8)
 - npm (package manager)
 - Node.js 22.x
+- shadcn/ui (CLI-managed, components copied into `src/components/ui/`,
+  configured via `components.json`), on `radix-ui` primitives +
+  `class-variance-authority` for variants + `cn` (clsx/tailwind-merge
+  replacement, official shadcn package) for class merging
+- `lucide-react` — icon set used by shadcn/ui components and service
+  icons in `src/content/`
+- `sonner` — toast notifications (the shadcn/ui "sonner" component)
+- `tw-animate-css` — animation utilities shadcn/ui's Sheet/Accordion
+  transitions depend on
 
 No new major dependency (a new package, or a major version bump of an
 existing one) may be added without first being justified in this file:

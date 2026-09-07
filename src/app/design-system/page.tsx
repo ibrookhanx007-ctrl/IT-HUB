@@ -1,114 +1,72 @@
 import type { Metadata } from "next";
 
+import { Section } from "@/components/ui/section";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from "@/components/ui/sheet";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
+
+import { ColorGroup } from "./color-group";
+import { ToastDemoButton } from "./toast-demo-button";
+import {
+  navyScale,
+  goldScale,
+  inkScale,
+  semanticScale,
+  typeScale,
+  spacingScale,
+} from "./tokens-data";
+
 // Private page: not linked from navigation, not indexed. Renders the
-// full design system (colors, type scale, spacing) for visual review.
+// full design system (colors, type scale, spacing, UI primitives) for
+// visual review.
 export const metadata: Metadata = {
   title: "Design System — IT HUB Corporation",
   robots: { index: false, follow: false },
 };
 
-const navyScale = [
-  { token: "navy-900", swatch: "bg-navy-900", label: "Background" },
-  { token: "navy-800", swatch: "bg-navy-800", label: "Surface" },
-  { token: "navy-700", swatch: "bg-navy-700", label: "Elevated surface" },
-  { token: "navy-600", swatch: "bg-navy-600", label: "Border" },
-];
-
-const goldScale = [
-  { token: "gold", swatch: "bg-gold", label: "Base" },
-  { token: "gold-hover", swatch: "bg-gold-hover", label: "Hover" },
-  { token: "gold-muted", swatch: "bg-gold-muted", label: "Muted" },
-];
-
-const inkScale = [
-  { token: "ink-primary", swatch: "bg-ink-primary", label: "Primary" },
-  { token: "ink-secondary", swatch: "bg-ink-secondary", label: "Secondary" },
-  { token: "ink-muted", swatch: "bg-ink-muted", label: "Muted" },
-];
-
-const semanticScale = [
-  { token: "success", swatch: "bg-success", label: "Success" },
-  { token: "error", swatch: "bg-error", label: "Error" },
-  { token: "warning", swatch: "bg-warning", label: "Warning" },
-];
-
-const typeScale = [
-  { className: "text-h1", label: "H1", sample: "Confident heading" },
-  { className: "text-h2", label: "H2", sample: "Confident heading" },
-  { className: "text-h3", label: "H3", sample: "Confident heading" },
-  { className: "text-h4", label: "H4", sample: "Confident heading" },
-  {
-    className: "text-body",
-    label: "Body",
-    sample: "Highly readable body copy for paragraphs and descriptions.",
-  },
-  {
-    className: "text-small",
-    label: "Small",
-    sample: "Small print, captions, and helper text.",
-  },
-];
-
-const spacingScale = [
-  { token: "1", className: "w-1" },
-  { token: "2", className: "w-2" },
-  { token: "3", className: "w-3" },
-  { token: "4", className: "w-4" },
-  { token: "6", className: "w-6" },
-  { token: "8", className: "w-8" },
-  { token: "10", className: "w-10" },
-  { token: "12", className: "w-12" },
-  { token: "16", className: "w-16" },
-  { token: "20", className: "w-20" },
-  { token: "24", className: "w-24" },
-  { token: "32", className: "w-32" },
-];
-
-function ColorGroup({
-  title,
-  colors,
-}: {
-  title: string;
-  colors: { token: string; swatch: string; label: string }[];
-}) {
-  return (
-    <div>
-      <h3 className="text-h4 mb-4">{title}</h3>
-      <div className="flex flex-wrap gap-4">
-        {colors.map((color) => (
-          <div key={color.token} className="w-40">
-            <div
-              className={`h-20 w-full rounded-md border border-navy-600 ${color.swatch}`}
-            />
-            <p className="text-small mt-2 text-ink-primary">{color.label}</p>
-            <p className="text-small text-ink-muted">{color.token}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function DesignSystemPage() {
   return (
-    <main className="mx-auto flex max-w-4xl flex-col gap-16 px-6 py-16">
-      <header>
+    <main>
+      <Section className="pb-0">
         <h1 className="text-h1">Design System</h1>
         <p className="text-body mt-4">
-          Brand tokens for IT HUB Corporation — dark navy, warm gold,
-          reviewed for WCAG AA contrast.
+          Brand tokens and UI primitives for IT HUB Corporation — dark navy,
+          warm gold, reviewed for WCAG AA contrast.
         </p>
-      </header>
+      </Section>
 
-      <section className="flex flex-col gap-10">
+      <Section className="flex flex-col gap-10">
         <h2 className="text-h3">Color</h2>
         <ColorGroup title="Navy" colors={navyScale} />
         <ColorGroup title="Gold" colors={goldScale} />
         <ColorGroup title="Text" colors={inkScale} />
         <ColorGroup title="Semantic" colors={semanticScale} />
-      </section>
+      </Section>
 
-      <section className="flex flex-col gap-6">
+      <Section className="flex flex-col gap-6">
         <h2 className="text-h3">Type scale</h2>
         <div className="flex flex-col gap-6">
           {typeScale.map((step) => (
@@ -123,9 +81,9 @@ export default function DesignSystemPage() {
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="flex flex-col gap-6">
+      <Section className="flex flex-col gap-6">
         <h2 className="text-h3">Spacing scale</h2>
         <div className="flex flex-col gap-3">
           {spacingScale.map((step) => (
@@ -137,7 +95,101 @@ export default function DesignSystemPage() {
             </div>
           ))}
         </div>
-      </section>
+      </Section>
+
+      <Section className="flex flex-col gap-16">
+        <h2 className="text-h3">UI primitives</h2>
+
+        <div className="flex flex-col items-start gap-4">
+          <h3 className="text-h4">Button</h3>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button>Default</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="outline">Outline</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="link">Link</Button>
+            <Button variant="destructive">Destructive</Button>
+            <Button disabled>Disabled</Button>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-start gap-4">
+          <h3 className="text-h4">Card</h3>
+          <Card className="max-w-sm">
+            <CardHeader>
+              <CardTitle>FBR & KPRA Compliance</CardTitle>
+              <CardDescription>
+                Stay compliant with Pakistani tax authorities.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-small text-ink-secondary">
+                Registration, filing, and audit support handled end to end.
+              </p>
+            </CardContent>
+            <CardFooter>
+              <Button variant="outline" size="sm">
+                Learn more
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <h3 className="text-h4">Input, Textarea & Label</h3>
+          <div className="flex max-w-sm flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="ds-name">Name</Label>
+              <Input id="ds-name" placeholder="Your name" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="ds-message">Message</Label>
+              <Textarea id="ds-message" placeholder="How can we help?" />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <h3 className="text-h4">Accordion</h3>
+          <Accordion type="single" collapsible className="max-w-sm">
+            <AccordionItem value="item-1">
+              <AccordionTrigger>What services do you offer?</AccordionTrigger>
+              <AccordionContent>
+                IT & software, tax and accounting, business registration,
+                digital marketing, and more.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>Where are you based?</AccordionTrigger>
+              <AccordionContent>
+                Mardan, Khyber Pakhtunkhwa, Pakistan.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+
+        <div className="flex flex-col items-start gap-4">
+          <h3 className="text-h4">Sheet</h3>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline">Open sheet</Button>
+            </SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetTitle>Menu</SheetTitle>
+                <SheetDescription>
+                  Used for the mobile navigation drawer.
+                </SheetDescription>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
+        </div>
+
+        <div className="flex flex-col items-start gap-4">
+          <h3 className="text-h4">Toast (Sonner)</h3>
+          <ToastDemoButton />
+        </div>
+      </Section>
     </main>
   );
 }
