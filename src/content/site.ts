@@ -15,6 +15,11 @@ export const siteConfig: SiteConfig = {
     },
     phone: "TODO: Add phone number",
     email: "TODO: Add email address",
+    hours: [
+      "Monday - Friday: 9:00 AM - 6:00 PM",
+      "Saturday: 10:00 AM - 2:00 PM",
+      "Sunday: Closed",
+    ],
   },
   social: [
     { platform: "Facebook", href: "TODO" },

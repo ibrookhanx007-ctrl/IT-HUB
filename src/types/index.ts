@@ -19,6 +19,8 @@ export interface ContactInfo {
   };
   phone: string;
   email: string;
+  /** e.g. "Monday - Friday: 9:00 AM - 6:00 PM". */
+  hours: string[];
 }
 
 export interface CtaLink {
@@ -89,6 +91,38 @@ export interface PageIntro {
   hero: {
     heading: string;
     description: string;
+  };
+}
+
+export interface AboutValue {
+  title: string;
+  description: string;
+}
+
+export interface AboutContent {
+  seo: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    heading: string;
+    description: string;
+  };
+  story: {
+    heading: string;
+    paragraphs: string[];
+  };
+  mission: {
+    heading: string;
+    statement: string;
+  };
+  vision: {
+    heading: string;
+    statement: string;
+  };
+  values: {
+    heading: string;
+    items: AboutValue[];
   };
 }
 

@@ -1,0 +1,63 @@
+import type { Metadata } from "next";
+
+import { aboutContent } from "@/content/about";
+import { Section } from "@/components/ui/section";
+import { WhyChooseUs } from "@/components/sections/why-choose-us";
+import { CtaBand } from "@/components/sections/cta-band";
+
+export const metadata: Metadata = {
+  title: aboutContent.seo.title,
+  description: aboutContent.seo.description,
+};
+
+export default function AboutPage() {
+  return (
+    <>
+      <Section className="flex flex-col gap-4 pb-0">
+        <h1 className="text-h1">{aboutContent.hero.heading}</h1>
+        <p className="text-body max-w-2xl">{aboutContent.hero.description}</p>
+      </Section>
+
+      <Section className="flex flex-col gap-6">
+        <h2 className="text-h2">{aboutContent.story.heading}</h2>
+        <div className="flex flex-col gap-4">
+          {aboutContent.story.paragraphs.map((paragraph) => (
+            <p key={paragraph} className="text-body max-w-3xl">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </Section>
+
+      <Section as="div" className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="flex flex-col gap-3 rounded-xl border border-navy-600 bg-navy-800 p-8">
+          <h2 className="text-h3">{aboutContent.mission.heading}</h2>
+          <p className="text-body">{aboutContent.mission.statement}</p>
+        </div>
+        <div className="flex flex-col gap-3 rounded-xl border border-navy-600 bg-navy-800 p-8">
+          <h2 className="text-h3">{aboutContent.vision.heading}</h2>
+          <p className="text-body">{aboutContent.vision.statement}</p>
+        </div>
+      </Section>
+
+      <Section className="flex flex-col gap-10">
+        <h2 className="text-h2">{aboutContent.values.heading}</h2>
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          {aboutContent.values.items.map((value) => (
+            <div
+              key={value.title}
+              className="flex flex-col gap-2 border-l-2 border-gold pl-6"
+            >
+              <h3 className="text-h4">{value.title}</h3>
+              <p className="text-body">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <WhyChooseUs />
+
+      <CtaBand />
+    </>
+  );
+}
