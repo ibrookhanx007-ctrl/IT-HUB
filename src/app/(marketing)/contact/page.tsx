@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
 import { contactPageIntro } from "@/content/pages";
 import { Section } from "@/components/ui/section";
-import { ContactFormPlaceholder } from "@/components/sections/contact-form-placeholder";
+import { ContactForm } from "@/components/sections/contact-form";
 import { OfficeMap } from "@/components/sections/office-map";
 
 export const metadata: Metadata = {
@@ -65,7 +65,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <ContactFormPlaceholder />
+        <ContactForm />
       </Section>
 
       <Section as="div" className="pt-0">

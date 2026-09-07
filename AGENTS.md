@@ -37,6 +37,12 @@ marketing/lead-generation site: no user accounts, no database.
 - `sonner` — toast notifications (the shadcn/ui "sonner" component)
 - `tw-animate-css` — animation utilities shadcn/ui's Sheet/Accordion
   transitions depend on
+- `zod` — schema validation for all external input (rule 5); the
+  contact form and API route share one schema
+- `react-hook-form` + `@hookform/resolvers` — form state and the Zod
+  resolver for the contact form (`components/ui/select` etc. aren't
+  native inputs, so they need `Controller`, which react-hook-form
+  provides)
 
 No new major dependency (a new package, or a major version bump of an
 existing one) may be added without first being justified in this file:
