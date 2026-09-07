@@ -43,6 +43,9 @@ marketing/lead-generation site: no user accounts, no database.
   resolver for the contact form (`components/ui/select` etc. aren't
   native inputs, so they need `Controller`, which react-hook-form
   provides)
+- `resend` + `@react-email/components` — sends the contact form
+  notification email (`src/lib/email.ts`) using a React Email template
+  (`src/emails/`)
 
 No new major dependency (a new package, or a major version bump of an
 existing one) may be added without first being justified in this file:
@@ -63,6 +66,7 @@ src/
     layout/               # Header, Footer, MobileNav
     sections/             # page sections (Hero, ServicesGrid, ContactForm)
   content/                # all site copy and data as typed TS files
+  emails/                 # React Email templates sent via src/lib/email.ts
   lib/                    # helpers, validation schemas, utilities
   types/                  # shared TypeScript types
 public/                   # images, favicon, static files
@@ -78,8 +82,12 @@ public/                   # images, favicon, static files
   `ui/` primitives and `content/` data.
 - `content/`: the single source of truth for site copy and structured
   data (services, pricing, team, etc.), as typed TS files.
+- `emails/`: React Email components rendered server-side by
+  `src/lib/email.ts` and sent via Resend — not part of the rendered
+  site, so kept separate from `components/`.
 - `lib/`: framework-agnostic helpers, Zod schemas, and utilities. No
-  React components.
+  React components (email templates are the one exception, and they
+  live in `emails/`, not here).
 - `types/`: shared TypeScript types used across more than one folder.
 - `public/`: static assets only — no code.
 

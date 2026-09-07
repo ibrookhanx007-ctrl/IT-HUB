@@ -2,11 +2,14 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { contactFormSchema } from "@/lib/validations/contact";
+import { services } from "@/content/services";
+import { sendContactEmail } from "@/lib/email";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
-// Same generic message/status for every failure (bad JSON, invalid
-// fields, honeypot hit) so a bot can't tell "wrong data" apart from
-// "we caught you". Specifics are logged server-side only, never in the
-// response body.
+// Same generic message/status for every validation-type failure (bad
+// JSON, invalid fields, honeypot hit) so a bot can't tell "wrong data"
+// apart from "we caught you". Specifics are logged server-side only,
+// never in the response body.
 function genericError(status: number) {
   return NextResponse.json(
     {
@@ -18,6 +21,19 @@ function genericError(status: number) {
 }
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(ip);
+
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { error: "Too many submissions. Please try again later." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimit.retryAfterSeconds) },
+      },
+    );
+  }
+
   let body: unknown;
 
   try {
@@ -43,19 +59,13 @@ export async function POST(request: NextRequest) {
   }
 
   const { name, email, phone, service, message } = result.data;
+  const serviceTitle =
+    services.find((item) => item.slug === service)?.title ?? service;
 
   try {
-    // TODO: send the submission via email (src/lib/email.ts) and apply
-    // IP-based rate limiting before this point — added in the next phase.
-    console.log("Contact form submission received:", {
-      name,
-      email,
-      phone,
-      service,
-      message,
-    });
+    await sendContactEmail({ name, email, phone, serviceTitle, message });
   } catch (error) {
-    console.error("Failed to process contact form submission:", error);
+    console.error("Failed to send contact form email:", error);
     return NextResponse.json(
       { error: "Something went wrong. Please try again later." },
       { status: 500 },
