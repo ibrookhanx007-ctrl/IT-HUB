@@ -18,7 +18,7 @@ export const services: Service[] = [
       "Software maintenance and technical support",
       "Systems integration with existing tools",
     ],
-    icon: "Code2",
+    icon: "Code",
     seo: {
       title: "IT & Software Solutions | IT HUB Corporation",
       description:
@@ -258,7 +258,7 @@ export const services: Service[] = [
       "Management accounts and reporting",
       "Bank loan and financing documentation",
     ],
-    icon: "LineChart",
+    icon: "ChartLine",
     seo: {
       title: "Accounting & Financial Services | IT HUB Corporation",
       description:
