@@ -81,6 +81,17 @@ export interface WhyUsPoint {
   icon: string;
 }
 
+export interface PageIntro {
+  seo: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    heading: string;
+    description: string;
+  };
+}
+
 export interface HomeContent {
   hero: {
     primaryCta: CtaLink;

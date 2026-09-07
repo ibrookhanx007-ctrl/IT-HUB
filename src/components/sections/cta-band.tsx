@@ -5,7 +5,14 @@ import { homeContent } from "@/content/home";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 
-function CtaBand() {
+interface CtaBandProps {
+  /** Overrides homeContent.ctaBand.heading — for page-specific copy. */
+  heading?: string;
+  /** Overrides homeContent.ctaBand.description — for page-specific copy. */
+  description?: string;
+}
+
+function CtaBand({ heading, description }: CtaBandProps) {
   return (
     <div className="bg-gold">
       <Section
@@ -14,10 +21,10 @@ function CtaBand() {
       >
         <div className="flex flex-col gap-2">
           <h2 className="text-h2 text-navy-900">
-            {homeContent.ctaBand.heading}
+            {heading ?? homeContent.ctaBand.heading}
           </h2>
           <p className="text-body max-w-xl text-navy-900/80">
-            {homeContent.ctaBand.description}
+            {description ?? homeContent.ctaBand.description}
           </p>
         </div>
 
