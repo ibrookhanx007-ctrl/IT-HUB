@@ -36,22 +36,43 @@ export const aboutContent: AboutContent = {
         title: "Integrity",
         description:
           "We tell clients what they need to hear, not what's easiest to say — including when a filing deadline is tight or a project scope needs to change.",
+        icon: "ShieldCheck",
       },
       {
-        title: "Transparency",
+        title: "Expertise",
         description:
-          "Fees, timelines, and what we can and can't do are agreed upfront. No line items that show up for the first time on an invoice.",
+          "Every engagement is handled by people who work in IT, tax, and compliance daily — not a generalist learning on your file.",
+        icon: "GraduationCap",
       },
       {
-        title: "Accountability",
+        title: "Client Focus",
         description:
-          "If we make an error on a filing or a build, we fix it — that's on us, not billed as extra work.",
+          "We scope work around what a business actually needs, not what's easiest for us to sell.",
+        icon: "Target",
+      },
+      {
+        title: "Timeliness",
+        description:
+          "Tax deadlines and project timelines are fixed, not flexible, and we plan around them so nothing arrives at the last minute.",
+        icon: "Clock",
       },
       {
         title: "Confidentiality",
         description:
           "Financial records, tax filings, and business data are handled under the same confidentiality standards we'd expect for our own business.",
+        icon: "Lock",
+      },
+      {
+        title: "Innovation",
+        description:
+          "We stay current on tax law changes and new technology so our clients don't find out the hard way that something changed.",
+        icon: "Lightbulb",
       },
     ],
+  },
+  team: {
+    heading: "Our Team",
+    emptyState:
+      "We're growing the team behind IT HUB Corporation — check back soon to meet the people handling your account.",
   },
 };

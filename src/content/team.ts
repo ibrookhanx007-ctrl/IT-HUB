@@ -10,24 +10,24 @@ export const teamMembers: TeamMember[] = [
     name: "Team Member 1",
     role: "PLACEHOLDER — role/title",
     bio: "PLACEHOLDER — replace with a real bio.",
-    photo: "/team/placeholder-1.jpg",
+    photo: "/team/placeholder-1.svg",
   },
   {
     name: "Team Member 2",
     role: "PLACEHOLDER — role/title",
     bio: "PLACEHOLDER — replace with a real bio.",
-    photo: "/team/placeholder-2.jpg",
+    photo: "/team/placeholder-2.svg",
   },
   {
     name: "Team Member 3",
     role: "PLACEHOLDER — role/title",
     bio: "PLACEHOLDER — replace with a real bio.",
-    photo: "/team/placeholder-3.jpg",
+    photo: "/team/placeholder-3.svg",
   },
   {
     name: "Team Member 4",
     role: "PLACEHOLDER — role/title",
     bio: "PLACEHOLDER — replace with a real bio.",
-    photo: "/team/placeholder-4.jpg",
+    photo: "/team/placeholder-4.svg",
   },
 ];

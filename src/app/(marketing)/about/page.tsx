@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 
+import { siteConfig } from "@/content/site";
 import { aboutContent } from "@/content/about";
 import { Section } from "@/components/ui/section";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
+import { Process } from "@/components/sections/process";
+import { Team } from "@/components/sections/team";
+import { Icon } from "@/components/ui/icon";
 import { CtaBand } from "@/components/sections/cta-band";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,6 +22,7 @@ export default function AboutPage() {
     <>
       <Section className="flex flex-col gap-4 pb-0">
         <h1 className="text-h1">{aboutContent.hero.heading}</h1>
+        <p className="text-h3 text-ink-secondary">{siteConfig.slogan}</p>
         <p className="text-body max-w-2xl">{aboutContent.hero.description}</p>
       </Section>
 
@@ -33,11 +38,11 @@ export default function AboutPage() {
       </Section>
 
       <Section as="div" className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="flex flex-col gap-3 rounded-xl border border-navy-600 bg-navy-800 p-8">
+        <div className="flex flex-col gap-3 rounded-xl border-2 border-gold bg-navy-800 p-8">
           <h2 className="text-h3">{aboutContent.mission.heading}</h2>
           <p className="text-body">{aboutContent.mission.statement}</p>
         </div>
-        <div className="flex flex-col gap-3 rounded-xl border border-navy-600 bg-navy-800 p-8">
+        <div className="flex flex-col gap-3 rounded-xl border-2 border-gold bg-navy-800 p-8">
           <h2 className="text-h3">{aboutContent.vision.heading}</h2>
           <p className="text-body">{aboutContent.vision.statement}</p>
         </div>
@@ -45,12 +50,14 @@ export default function AboutPage() {
 
       <Section className="flex flex-col gap-10">
         <h2 className="text-h2">{aboutContent.values.heading}</h2>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {aboutContent.values.items.map((value) => (
-            <div
-              key={value.title}
-              className="flex flex-col gap-2 border-l-2 border-gold pl-6"
-            >
+            <div key={value.title} className="flex flex-col gap-3">
+              <Icon
+                name={value.icon}
+                className="size-8 text-gold"
+                aria-hidden="true"
+              />
               <h3 className="text-h4">{value.title}</h3>
               <p className="text-body">{value.description}</p>
             </div>
@@ -59,6 +66,10 @@ export default function AboutPage() {
       </Section>
 
       <WhyChooseUs />
+
+      <Team />
+
+      <Process />
 
       <CtaBand />
     </>

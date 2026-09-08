@@ -1,6 +1,8 @@
 export interface AboutValue {
   title: string;
   description: string;
+  /** lucide-react icon name. */
+  icon: string;
 }
 
 export interface AboutContent {
@@ -27,5 +29,9 @@ export interface AboutContent {
   values: {
     heading: string;
     items: AboutValue[];
+  };
+  team: {
+    heading: string;
+    emptyState: string;
   };
 }
