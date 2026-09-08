@@ -6,14 +6,18 @@ import {
   Circle,
   Clock,
   Code,
+  FileSignature,
   Handshake,
+  LifeBuoy,
   Megaphone,
+  MessageCircle,
   PenTool,
   Receipt,
   Scale,
   ShieldCheck,
   ShoppingCart,
   Users,
+  Wrench,
   type LucideIcon,
 } from "lucide-react";
 
@@ -28,14 +32,18 @@ const iconMap: Record<string, LucideIcon> = {
   ChartLine,
   Clock,
   Code,
+  FileSignature,
   Handshake,
+  LifeBuoy,
   Megaphone,
+  MessageCircle,
   PenTool,
   Receipt,
   Scale,
   ShieldCheck,
   ShoppingCart,
   Users,
+  Wrench,
 };
 
 /** Resolves a lucide-react icon name (as stored in content data) to its component. */

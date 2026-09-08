@@ -46,6 +46,9 @@ marketing/lead-generation site: no user accounts, no database.
 - `resend` + `@react-email/components` — sends the contact form
   notification email (`src/lib/email.ts`) using a React Email template
   (`src/emails/`)
+- `embla-carousel-react` + `embla-carousel-autoplay` — the testimonials
+  carousel (`components/ui/carousel.tsx`, shadcn's wrapper; keyboard
+  and autoplay-with-pause-on-hover aren't reasonably hand-rollable)
 
 No new major dependency (a new package, or a major version bump of an
 existing one) may be added without first being justified in this file:
