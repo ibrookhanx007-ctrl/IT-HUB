@@ -1,4 +1,6 @@
 "use client";
+// Radix's Label primitive attaches a mousedown handler (guards against
+// double-click text selection) and is itself client-only.
 
 import * as React from "react";
 import { cn } from "cn";

@@ -1,6 +1,44 @@
-import { icons, type LucideIcon } from "lucide-react";
+import {
+  BadgeCheck,
+  Building2,
+  Calculator,
+  ChartLine,
+  Circle,
+  Clock,
+  Code,
+  Handshake,
+  Megaphone,
+  PenTool,
+  Receipt,
+  Scale,
+  ShieldCheck,
+  ShoppingCart,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
+
+// Named imports (not lucide-react's `icons` lookup object) so unused
+// icons are tree-shaken out of the client bundle — importing `icons`
+// pulls in the entire ~1800-icon library regardless of how many are
+// actually referenced by name at runtime.
+const iconMap: Record<string, LucideIcon> = {
+  BadgeCheck,
+  Building2,
+  Calculator,
+  ChartLine,
+  Clock,
+  Code,
+  Handshake,
+  Megaphone,
+  PenTool,
+  Receipt,
+  Scale,
+  ShieldCheck,
+  ShoppingCart,
+  Users,
+};
 
 /** Resolves a lucide-react icon name (as stored in content data) to its component. */
 export function getIcon(name: string): LucideIcon {
-  return icons[name as keyof typeof icons] ?? icons.Circle;
+  return iconMap[name] ?? Circle;
 }

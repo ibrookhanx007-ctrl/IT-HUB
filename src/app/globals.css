@@ -64,7 +64,10 @@
   --color-accent: var(--color-navy-700);
   --color-accent-foreground: var(--color-ink-primary);
   --color-destructive: var(--color-error);
-  --color-destructive-foreground: var(--color-ink-primary);
+  /* --color-error is a light/pastel red (chosen for text on navy), so
+     white text on a solid destructive fill fails WCAG AA (~2.8:1);
+     navy-900 clears it comfortably (~6.8:1). */
+  --color-destructive-foreground: var(--color-navy-900);
   --color-border: var(--color-navy-600);
   --color-input: var(--color-navy-600);
   --color-ring: var(--color-gold);

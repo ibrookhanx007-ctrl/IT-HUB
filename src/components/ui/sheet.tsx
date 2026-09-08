@@ -1,4 +1,6 @@
 "use client";
+// Radix's Dialog primitive (Sheet is built on it) manages open state,
+// focus trapping, and portal rendering.
 
 import * as React from "react";
 import { cn } from "cn";

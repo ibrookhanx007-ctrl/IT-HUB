@@ -46,7 +46,7 @@ export default function ServicesPage() {
                 href={`/services/${service.slug}`}
                 className="inline-flex w-fit items-center gap-2 rounded-sm font-medium text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
               >
-                Learn more
+                {servicesPageIntro.learnMoreLabel}
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>

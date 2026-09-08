@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 
 import { services } from "@/content/services";
+import { serviceDetailLabels } from "@/content/pages";
 import { getServiceSchema } from "@/lib/structured-data";
 import { Section } from "@/components/ui/section";
 import { Icon } from "@/components/ui/icon";
@@ -82,7 +83,7 @@ export default async function ServiceDetailPage(
         </div>
 
         <div className="flex flex-col gap-4 rounded-xl border border-navy-600 bg-navy-800 p-6">
-          <h2 className="text-h4">What&apos;s included</h2>
+          <h2 className="text-h4">{serviceDetailLabels.deliverablesHeading}</h2>
           <ul className="flex flex-col gap-3">
             {service.deliverables.map((item) => (
               <li key={item} className="text-body flex items-start gap-2">
@@ -98,7 +99,7 @@ export default async function ServiceDetailPage(
       </Section>
 
       <Section className="flex flex-col gap-8">
-        <h2 className="text-h3">Related services</h2>
+        <h2 className="text-h3">{serviceDetailLabels.relatedHeading}</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {related.map((relatedService) => (
             <Link
@@ -113,7 +114,7 @@ export default async function ServiceDetailPage(
                     className="size-8 text-gold"
                     aria-hidden="true"
                   />
-                  <CardTitle className="text-h4 mt-2">
+                  <CardTitle as="h3" className="text-h4 mt-2">
                     {relatedService.title}
                   </CardTitle>
                   <CardDescription>

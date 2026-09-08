@@ -1,4 +1,6 @@
 "use client";
+// Radix's Select primitive manages open state, keyboard navigation,
+// and portal rendering.
 
 import * as React from "react";
 import { cn } from "cn";

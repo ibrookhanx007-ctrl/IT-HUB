@@ -1,4 +1,6 @@
 "use client";
+// sonner's Toaster subscribes to the toast queue and renders/animates
+// toasts on the client.
 
 import {
   CircleCheckIcon,

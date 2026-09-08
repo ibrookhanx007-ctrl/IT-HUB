@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
 import { services } from "@/content/services";
+import { contactFormLabels } from "@/content/pages";
 import {
   contactFormSchema,
   type ContactFormValues,
@@ -52,17 +53,19 @@ function ContactForm() {
 
       if (!response.ok) {
         const body = await response.json().catch(() => null);
-        throw new Error(body?.error ?? "Something went wrong.");
+        throw new Error(body?.error ?? contactFormLabels.genericErrorMessage);
       }
 
-      toast.success("Message sent", {
-        description: "We'll get back to you within one business day.",
+      toast.success(contactFormLabels.successTitle, {
+        description: contactFormLabels.successDescription,
       });
       reset();
     } catch (error) {
-      toast.error("Couldn't send your message", {
+      toast.error(contactFormLabels.errorTitle, {
         description:
-          error instanceof Error ? error.message : "Please try again.",
+          error instanceof Error
+            ? error.message
+            : contactFormLabels.genericErrorMessage,
       });
     }
   }
@@ -87,9 +90,16 @@ function ContactForm() {
 
       <div className="flex flex-col gap-2">
         <Label htmlFor="name">Name</Label>
-        <Input id="name" aria-invalid={!!errors.name} {...register("name")} />
+        <Input
+          id="name"
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? "name-error" : undefined}
+          {...register("name")}
+        />
         {errors.name && (
-          <p className="text-small text-error">{errors.name.message}</p>
+          <p id="name-error" className="text-small text-error">
+            {errors.name.message}
+          </p>
         )}
       </div>
 
@@ -99,10 +109,13 @@ function ContactForm() {
           id="email"
           type="email"
           aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "email-error" : undefined}
           {...register("email")}
         />
         {errors.email && (
-          <p className="text-small text-error">{errors.email.message}</p>
+          <p id="email-error" className="text-small text-error">
+            {errors.email.message}
+          </p>
         )}
       </div>
 
@@ -112,10 +125,13 @@ function ContactForm() {
           id="phone"
           type="tel"
           aria-invalid={!!errors.phone}
+          aria-describedby={errors.phone ? "phone-error" : undefined}
           {...register("phone")}
         />
         {errors.phone && (
-          <p className="text-small text-error">{errors.phone.message}</p>
+          <p id="phone-error" className="text-small text-error">
+            {errors.phone.message}
+          </p>
         )}
       </div>
 
@@ -129,9 +145,12 @@ function ContactForm() {
               <SelectTrigger
                 id="service"
                 aria-invalid={!!errors.service}
+                aria-describedby={errors.service ? "service-error" : undefined}
                 onBlur={field.onBlur}
               >
-                <SelectValue placeholder="Select a service" />
+                <SelectValue
+                  placeholder={contactFormLabels.servicePlaceholder}
+                />
               </SelectTrigger>
               <SelectContent>
                 {services.map((service) => (
@@ -144,7 +163,9 @@ function ContactForm() {
           )}
         />
         {errors.service && (
-          <p className="text-small text-error">{errors.service.message}</p>
+          <p id="service-error" className="text-small text-error">
+            {errors.service.message}
+          </p>
         )}
       </div>
 
@@ -154,15 +175,20 @@ function ContactForm() {
           id="message"
           rows={5}
           aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? "message-error" : undefined}
           {...register("message")}
         />
         {errors.message && (
-          <p className="text-small text-error">{errors.message.message}</p>
+          <p id="message-error" className="text-small text-error">
+            {errors.message.message}
+          </p>
         )}
       </div>
 
       <Button type="submit" disabled={isSubmitting} size="lg">
-        {isSubmitting ? "Sending..." : "Send Message"}
+        {isSubmitting
+          ? contactFormLabels.submittingLabel
+          : contactFormLabels.submitLabel}
       </Button>
     </form>
   );

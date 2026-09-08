@@ -35,7 +35,9 @@ function ServicesGrid() {
                   className="size-8 text-gold"
                   aria-hidden="true"
                 />
-                <CardTitle className="text-h4 mt-2">{service.title}</CardTitle>
+                <CardTitle as="h3" className="text-h4 mt-2">
+                  {service.title}
+                </CardTitle>
                 <CardDescription>{service.shortDescription}</CardDescription>
               </CardHeader>
             </Card>

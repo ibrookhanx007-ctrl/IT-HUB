@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/content/site";
-import { contactPageIntro } from "@/content/pages";
+import { contactPageIntro, contactFieldLabels } from "@/content/pages";
 import { Section } from "@/components/ui/section";
 import { ContactForm } from "@/components/sections/contact-form";
 import { OfficeMap } from "@/components/sections/office-map";
@@ -29,7 +29,7 @@ export default function ContactPage() {
       <Section as="div" className="grid grid-cols-1 gap-12 lg:grid-cols-2">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-2">
-            <h2 className="text-h4">Address</h2>
+            <h2 className="text-h4">{contactFieldLabels.address}</h2>
             <p className="text-body">
               {address.line1}, {address.city}, {address.region},{" "}
               {address.country}
@@ -37,7 +37,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h2 className="text-h4">Phone</h2>
+            <h2 className="text-h4">{contactFieldLabels.phone}</h2>
             <a
               href={`tel:${phone.replace(/\s/g, "")}`}
               className="text-body w-fit rounded-sm text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
@@ -47,7 +47,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h2 className="text-h4">Email</h2>
+            <h2 className="text-h4">{contactFieldLabels.email}</h2>
             <a
               href={`mailto:${email}`}
               className="text-body w-fit rounded-sm text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
@@ -57,7 +57,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h2 className="text-h4">Business Hours</h2>
+            <h2 className="text-h4">{contactFieldLabels.hours}</h2>
             <ul className="flex flex-col gap-1">
               {hours.map((line) => (
                 <li key={line} className="text-body">

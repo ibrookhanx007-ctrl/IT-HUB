@@ -1,4 +1,5 @@
 "use client";
+// Radix's Accordion primitive manages open/closed state internally.
 
 import * as React from "react";
 import { cn } from "cn";

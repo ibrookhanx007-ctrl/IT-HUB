@@ -1,4 +1,5 @@
 import * as React from "react";
+import type { ElementType } from "react";
 import { cn } from "cn";
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
@@ -27,9 +28,15 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+interface CardTitleProps extends React.ComponentProps<"div"> {
+  /** Defaults to "div" — pass a heading tag (e.g. "h3") when the card
+   *  title should participate in the page's heading hierarchy. */
+  as?: ElementType;
+}
+
+function CardTitle({ className, as: Comp = "div", ...props }: CardTitleProps) {
   return (
-    <div
+    <Comp
       data-slot="card-title"
       className={cn("leading-none font-semibold", className)}
       {...props}

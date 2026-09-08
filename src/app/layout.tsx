@@ -55,9 +55,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${headingSans.variable} ${bodySans.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-navy-900 font-body text-ink-primary antialiased">
+        <a
+          href="#main-content"
+          className="sr-only rounded-md bg-gold px-4 py-2 font-medium text-navy-900 focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50"
+        >
+          Skip to content
+        </a>
         <JsonLd data={getOrganizationSchema()} />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
         <Footer />
         <Toaster />
       </body>

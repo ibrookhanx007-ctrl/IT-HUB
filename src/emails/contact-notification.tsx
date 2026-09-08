@@ -20,6 +20,12 @@ interface ContactNotificationEmailProps {
 
 // Sent to the company inbox via Resend (src/lib/email.ts) when the
 // contact form is submitted — see src/app/api/contact/route.ts.
+//
+// Colors are hardcoded (not Tailwind tokens) because email clients
+// render this as inline styles, not through our build's CSS — Tailwind
+// classes and CSS custom properties aren't available here. This uses a
+// light/white layout (standard for email) rather than the site's dark
+// theme, since email clients don't reliably respect a dark background.
 function ContactNotificationEmail({
   name,
   email,

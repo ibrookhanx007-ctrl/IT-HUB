@@ -1,6 +1,13 @@
-import type { PageIntro, NotFoundContent } from "@/types";
+import type {
+  PageIntro,
+  NotFoundContent,
+  ServicesPageContent,
+  ServiceDetailLabels,
+  ContactFieldLabels,
+  ContactFormLabels,
+} from "@/types";
 
-export const servicesPageIntro: PageIntro = {
+export const servicesPageIntro: ServicesPageContent = {
   seo: {
     title: "Our Services",
     description:
@@ -11,6 +18,12 @@ export const servicesPageIntro: PageIntro = {
     description:
       "Ten service lines covering IT, tax, and business operations. Explore each one below, or get in touch and we'll point you to the right one.",
   },
+  learnMoreLabel: "Learn more",
+};
+
+export const serviceDetailLabels: ServiceDetailLabels = {
+  deliverablesHeading: "What's included",
+  relatedHeading: "Related services",
 };
 
 export const contactPageIntro: PageIntro = {
@@ -24,6 +37,23 @@ export const contactPageIntro: PageIntro = {
     description:
       "Have a question or want a quote? Reach us directly, or send a message and we'll get back to you within one business day.",
   },
+};
+
+export const contactFieldLabels: ContactFieldLabels = {
+  address: "Address",
+  phone: "Phone",
+  email: "Email",
+  hours: "Business Hours",
+};
+
+export const contactFormLabels: ContactFormLabels = {
+  submitLabel: "Send Message",
+  submittingLabel: "Sending...",
+  servicePlaceholder: "Select a service",
+  successTitle: "Message sent",
+  successDescription: "We'll get back to you within one business day.",
+  errorTitle: "Couldn't send your message",
+  genericErrorMessage: "Something went wrong. Please try again.",
 };
 
 export const notFoundContent: NotFoundContent = {
