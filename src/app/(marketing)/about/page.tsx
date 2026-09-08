@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
 import { aboutContent } from "@/content/about";
 import { Section } from "@/components/ui/section";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { Process } from "@/components/sections/process";
 import { Team } from "@/components/sections/team";
@@ -20,6 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function AboutPage() {
   return (
     <>
+      <Breadcrumbs items={[{ label: "About", href: "/about" }]} />
+
       <Section className="flex flex-col gap-4 pb-0">
         <h1 className="text-h1">{aboutContent.hero.heading}</h1>
         <p className="text-h3 text-ink-secondary">{siteConfig.slogan}</p>

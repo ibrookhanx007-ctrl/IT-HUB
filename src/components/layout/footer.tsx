@@ -74,10 +74,25 @@ function Footer() {
       </Section>
 
       <div className="border-t border-navy-600">
-        <Section as="div" className="py-6">
+        <Section
+          as="div"
+          className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between"
+        >
           <p className="text-small text-ink-muted">
             © {year} {siteConfig.name}. {siteConfig.footer.copyrightSuffix}
           </p>
+          <ul className="flex gap-6">
+            {siteConfig.footer.legalNav.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-small rounded-sm text-ink-muted hover:text-ink-primary focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Section>
       </div>
     </footer>

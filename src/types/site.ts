@@ -3,6 +3,8 @@ export interface NavItem {
   href: string;
 }
 
+export type BreadcrumbItem = NavItem;
+
 export interface SocialLink {
   platform: string;
   href: string;
@@ -19,6 +21,8 @@ export interface ContactInfo {
   email: string;
   /** e.g. "Monday - Friday: 9:00 AM - 6:00 PM". */
   hours: string[];
+  /** Digits with country code, no "+" or spaces, e.g. "923001234567" — used to build wa.me links. */
+  whatsapp: string;
 }
 
 export interface CtaLink {
@@ -33,6 +37,7 @@ export interface FooterContent {
     contact: string;
   };
   copyrightSuffix: string;
+  legalNav: NavItem[];
 }
 
 export interface SiteConfig {

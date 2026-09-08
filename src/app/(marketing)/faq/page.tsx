@@ -5,6 +5,7 @@ import { faqPageIntro } from "@/content/pages";
 import { getFaqSchema } from "@/lib/structured-data";
 import { Section } from "@/components/ui/section";
 import { JsonLd } from "@/components/ui/json-ld";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import {
   Accordion,
   AccordionItem,
@@ -33,6 +34,8 @@ export default function FaqPage() {
   return (
     <>
       <JsonLd data={getFaqSchema(faqItems)} />
+
+      <Breadcrumbs items={[{ label: "FAQ", href: "/faq" }]} />
 
       <Section className="flex flex-col gap-4 pb-0">
         <h1 className="text-h1">{faqPageIntro.hero.heading}</h1>

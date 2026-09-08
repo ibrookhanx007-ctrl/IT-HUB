@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
 import { contactPageIntro, contactFieldLabels } from "@/content/pages";
 import { Section } from "@/components/ui/section";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ContactForm } from "@/components/sections/contact-form";
 import { OfficeMap } from "@/components/sections/office-map";
 
@@ -19,6 +20,8 @@ export default function ContactPage() {
 
   return (
     <>
+      <Breadcrumbs items={[{ label: "Contact", href: "/contact" }]} />
+
       <Section className="flex flex-col gap-4 pb-0">
         <h1 className="text-h1">{contactPageIntro.hero.heading}</h1>
         <p className="text-body max-w-2xl">

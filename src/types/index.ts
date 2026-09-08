@@ -8,3 +8,4 @@ export * from "./pages";
 export * from "./home";
 export * from "./about";
 export * from "./marketing";
+export * from "./legal";

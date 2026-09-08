@@ -1,6 +1,6 @@
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
-import type { Service, FaqItem } from "@/types";
+import type { Service, FaqItem, BreadcrumbItem } from "@/types";
 
 // Plain schema.org objects — rendered via <JsonLd> (components/ui/json-ld.tsx).
 // https://schema.org/LocalBusiness
@@ -49,6 +49,20 @@ export function getServiceSchema(service: Service) {
       name: "Pakistan",
     },
     url: `${siteConfig.url}/services/${service.slug}`,
+  };
+}
+
+// https://schema.org/BreadcrumbList
+export function getBreadcrumbSchema(items: BreadcrumbItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      item: `${siteConfig.url}${item.href}`,
+    })),
   };
 }
 

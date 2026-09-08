@@ -8,6 +8,7 @@ import { portfolioItems } from "@/content/portfolio";
 import { services } from "@/content/services";
 import { portfolioDetailLabels } from "@/content/pages";
 import { Section } from "@/components/ui/section";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { CtaBand } from "@/components/sections/cta-band";
 
 export function generateStaticParams() {
@@ -45,6 +46,13 @@ export default async function PortfolioDetailPage(
 
   return (
     <>
+      <Breadcrumbs
+        items={[
+          { label: "Portfolio", href: "/portfolio" },
+          { label: item.clientName, href: `/portfolio/${item.slug}` },
+        ]}
+      />
+
       <Section className="flex flex-col gap-4 pb-0">
         <Link
           href="/portfolio"

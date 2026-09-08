@@ -10,6 +10,7 @@ import { getServiceSchema } from "@/lib/structured-data";
 import { Section } from "@/components/ui/section";
 import { Icon } from "@/components/ui/icon";
 import { JsonLd } from "@/components/ui/json-ld";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import {
   Card,
   CardHeader,
@@ -68,6 +69,13 @@ export default async function ServiceDetailPage(
   return (
     <>
       <JsonLd data={getServiceSchema(service)} />
+
+      <Breadcrumbs
+        items={[
+          { label: "Services", href: "/services" },
+          { label: service.title, href: `/services/${service.slug}` },
+        ]}
+      />
 
       <Section className="flex flex-col gap-6 pb-0">
         <Icon

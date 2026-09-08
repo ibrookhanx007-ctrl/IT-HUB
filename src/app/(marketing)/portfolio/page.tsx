@@ -3,6 +3,7 @@ import { Suspense } from "react";
 
 import { portfolioPageIntro } from "@/content/pages";
 import { Section } from "@/components/ui/section";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { PortfolioGrid } from "@/components/sections/portfolio-grid";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -16,6 +17,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function PortfolioPage() {
   return (
     <>
+      <Breadcrumbs items={[{ label: "Portfolio", href: "/portfolio" }]} />
+
       <Section className="flex flex-col gap-4 pb-0">
         <h1 className="text-h1">{portfolioPageIntro.hero.heading}</h1>
         <p className="text-body max-w-2xl">

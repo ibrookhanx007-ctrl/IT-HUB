@@ -6,6 +6,7 @@ import { services } from "@/content/services";
 import { servicesPageIntro } from "@/content/pages";
 import { Section } from "@/components/ui/section";
 import { Icon } from "@/components/ui/icon";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -18,6 +19,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function ServicesPage() {
   return (
     <>
+      <Breadcrumbs items={[{ label: "Services", href: "/services" }]} />
+
       <Section className="flex flex-col gap-4 pb-0">
         <h1 className="text-h1">{servicesPageIntro.hero.heading}</h1>
         <p className="text-body max-w-2xl">

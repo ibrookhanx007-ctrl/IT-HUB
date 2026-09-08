@@ -28,6 +28,8 @@ export const siteConfig: SiteConfig = {
     },
     phone: "TODO: Add phone number",
     email: "TODO: Add email address",
+    whatsapp:
+      "TODO: Add WhatsApp number (digits with country code, e.g. 923001234567)",
     hours: [
       "Monday - Friday: 9:00 AM - 6:00 PM",
       "Saturday: 10:00 AM - 2:00 PM",
@@ -59,5 +61,9 @@ export const siteConfig: SiteConfig = {
       contact: "Contact",
     },
     copyrightSuffix: "All rights reserved.",
+    legalNav: [
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-of-service" },
+    ],
   },
 };

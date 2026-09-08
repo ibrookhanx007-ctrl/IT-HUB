@@ -5,8 +5,11 @@ import { siteConfig } from "@/content/site";
 import { getOrganizationSchema } from "@/lib/structured-data";
 import { Toaster } from "@/components/ui/sonner";
 import { JsonLd } from "@/components/ui/json-ld";
+import { UtilityBar } from "@/components/layout/utility-bar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { WhatsAppButton } from "@/components/layout/whatsapp-button";
+import { BackToTop } from "@/components/layout/back-to-top";
 
 // Confident, geometric sans for headings.
 const headingSans = Sora({
@@ -62,11 +65,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <JsonLd data={getOrganizationSchema()} />
+        <UtilityBar />
         <Header />
         <main id="main-content" className="flex-1">
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
+        <BackToTop />
         <Toaster />
       </body>
     </html>
