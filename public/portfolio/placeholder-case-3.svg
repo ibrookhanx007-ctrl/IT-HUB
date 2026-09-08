@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="240" viewBox="0 0 400 240">
+  <rect width="400" height="240" fill="#1a2332"/>
+  <rect x="0.5" y="0.5" width="399" height="239" fill="none" stroke="#2a3548" stroke-width="1"/>
+  <text x="200" y="124" font-family="system-ui, sans-serif" font-size="16" fill="#8792a6" text-anchor="middle">Case Study 3 (Placeholder)</text>
+</svg>

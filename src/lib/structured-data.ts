@@ -1,6 +1,6 @@
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
-import type { Service } from "@/types";
+import type { Service, FaqItem } from "@/types";
 
 // Plain schema.org objects — rendered via <JsonLd> (components/ui/json-ld.tsx).
 // https://schema.org/LocalBusiness
@@ -49,5 +49,21 @@ export function getServiceSchema(service: Service) {
       name: "Pakistan",
     },
     url: `${siteConfig.url}/services/${service.slug}`,
+  };
+}
+
+// https://schema.org/FAQPage
+export function getFaqSchema(items: FaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }

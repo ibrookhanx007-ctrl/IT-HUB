@@ -3,6 +3,8 @@ import type {
   NotFoundContent,
   ServicesPageContent,
   ServiceDetailLabels,
+  PortfolioPageContent,
+  PortfolioDetailLabels,
   ContactFieldLabels,
   ContactFormLabels,
 } from "@/types";
@@ -24,6 +26,45 @@ export const servicesPageIntro: ServicesPageContent = {
 export const serviceDetailLabels: ServiceDetailLabels = {
   deliverablesHeading: "What's included",
   relatedHeading: "Related services",
+  faqHeading: "Frequently asked questions",
+  faqViewAllLabel: "View all FAQs",
+};
+
+export const portfolioPageIntro: PortfolioPageContent = {
+  seo: {
+    title: "Our Work",
+    description:
+      "Case studies from IT HUB Corporation's work across tax compliance, custom software, e-commerce, and business registration in Pakistan.",
+  },
+  hero: {
+    heading: "Our Work",
+    description:
+      "A look at the kind of work we do, filtered by service. Case studies below are illustrative until real client work is published here.",
+  },
+  filterAllLabel: "All",
+  viewCaseStudyLabel: "View case study",
+  emptyStateMessage: "No case studies for this service yet — check back soon.",
+};
+
+export const portfolioDetailLabels: PortfolioDetailLabels = {
+  challengeHeading: "The Challenge",
+  solutionHeading: "Our Solution",
+  resultHeading: "The Result",
+  relatedServiceLabel: "Related service",
+  backLabel: "Back to all case studies",
+};
+
+export const faqPageIntro: PageIntro = {
+  seo: {
+    title: "Frequently Asked Questions",
+    description:
+      "Answers to common questions about working with IT HUB Corporation — getting started, tax and compliance, IT services, and pricing.",
+  },
+  hero: {
+    heading: "Frequently Asked Questions",
+    description:
+      "Can't find what you're looking for? Get in touch and we'll answer directly.",
+  },
 };
 
 export const contactPageIntro: PageIntro = {

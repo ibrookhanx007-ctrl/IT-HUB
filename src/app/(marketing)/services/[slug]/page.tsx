@@ -5,6 +5,7 @@ import { Check } from "lucide-react";
 
 import { services } from "@/content/services";
 import { serviceDetailLabels } from "@/content/pages";
+import { getServiceFaqItems } from "@/lib/faq";
 import { getServiceSchema } from "@/lib/structured-data";
 import { Section } from "@/components/ui/section";
 import { Icon } from "@/components/ui/icon";
@@ -15,6 +16,12 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 import { CtaBand } from "@/components/sections/cta-band";
 
 export function generateStaticParams() {
@@ -56,6 +63,7 @@ export default async function ServiceDetailPage(
   }
 
   const related = getRelatedServices(service.slug);
+  const faqItems = getServiceFaqItems(service.slug);
 
   return (
     <>
@@ -125,6 +133,34 @@ export default async function ServiceDetailPage(
             </Link>
           ))}
         </div>
+      </Section>
+
+      <Section className="flex flex-col gap-6">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="text-h3">{serviceDetailLabels.faqHeading}</h2>
+          <Link
+            href="/faq"
+            className="text-small inline-flex w-fit shrink-0 items-center gap-2 rounded-sm font-medium text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+          >
+            {serviceDetailLabels.faqViewAllLabel}
+          </Link>
+        </div>
+        <Accordion type="single" collapsible className="w-full">
+          {faqItems.map((item) => (
+            <AccordionItem
+              key={item.question}
+              value={item.question}
+              className="border-navy-600"
+            >
+              <AccordionTrigger className="text-body text-left font-semibold text-ink-primary hover:no-underline">
+                {item.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-body text-ink-secondary">
+                {item.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </Section>
 
       <CtaBand

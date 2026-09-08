@@ -19,6 +19,22 @@ export interface ServicesPageContent extends PageIntro {
 export interface ServiceDetailLabels {
   deliverablesHeading: string;
   relatedHeading: string;
+  faqHeading: string;
+  faqViewAllLabel: string;
+}
+
+export interface PortfolioPageContent extends PageIntro {
+  filterAllLabel: string;
+  viewCaseStudyLabel: string;
+  emptyStateMessage: string;
+}
+
+export interface PortfolioDetailLabels {
+  challengeHeading: string;
+  solutionHeading: string;
+  resultHeading: string;
+  relatedServiceLabel: string;
+  backLabel: string;
 }
 
 export interface ContactFieldLabels {

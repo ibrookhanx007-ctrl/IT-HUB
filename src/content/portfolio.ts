@@ -16,7 +16,7 @@ export const portfolioItems: PortfolioItem[] = [
     challenge: "PLACEHOLDER — replace with the real challenge.",
     solution: "PLACEHOLDER — replace with the real solution.",
     result: "PLACEHOLDER — replace with the real, verifiable result.",
-    image: "/portfolio/placeholder-case-1.jpg",
+    image: "/portfolio/placeholder-case-1.svg",
   },
   {
     slug: "placeholder-case-2",
@@ -26,7 +26,7 @@ export const portfolioItems: PortfolioItem[] = [
     challenge: "PLACEHOLDER — replace with the real challenge.",
     solution: "PLACEHOLDER — replace with the real solution.",
     result: "PLACEHOLDER — replace with the real, verifiable result.",
-    image: "/portfolio/placeholder-case-2.jpg",
+    image: "/portfolio/placeholder-case-2.svg",
   },
   {
     slug: "placeholder-case-3",
@@ -36,7 +36,7 @@ export const portfolioItems: PortfolioItem[] = [
     challenge: "PLACEHOLDER — replace with the real challenge.",
     solution: "PLACEHOLDER — replace with the real solution.",
     result: "PLACEHOLDER — replace with the real, verifiable result.",
-    image: "/portfolio/placeholder-case-3.jpg",
+    image: "/portfolio/placeholder-case-3.svg",
   },
   {
     slug: "placeholder-case-4",
@@ -46,7 +46,7 @@ export const portfolioItems: PortfolioItem[] = [
     challenge: "PLACEHOLDER — replace with the real challenge.",
     solution: "PLACEHOLDER — replace with the real solution.",
     result: "PLACEHOLDER — replace with the real, verifiable result.",
-    image: "/portfolio/placeholder-case-4.jpg",
+    image: "/portfolio/placeholder-case-4.svg",
   },
   {
     slug: "placeholder-case-5",
@@ -56,7 +56,7 @@ export const portfolioItems: PortfolioItem[] = [
     challenge: "PLACEHOLDER — replace with the real challenge.",
     solution: "PLACEHOLDER — replace with the real solution.",
     result: "PLACEHOLDER — replace with the real, verifiable result.",
-    image: "/portfolio/placeholder-case-5.jpg",
+    image: "/portfolio/placeholder-case-5.svg",
   },
   {
     slug: "placeholder-case-6",
@@ -66,6 +66,6 @@ export const portfolioItems: PortfolioItem[] = [
     challenge: "PLACEHOLDER — replace with the real challenge.",
     solution: "PLACEHOLDER — replace with the real solution.",
     result: "PLACEHOLDER — replace with the real, verifiable result.",
-    image: "/portfolio/placeholder-case-6.jpg",
+    image: "/portfolio/placeholder-case-6.svg",
   },
 ];
