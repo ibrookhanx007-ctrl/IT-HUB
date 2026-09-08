@@ -49,6 +49,14 @@ marketing/lead-generation site: no user accounts, no database.
 - `embla-carousel-react` + `embla-carousel-autoplay` — the testimonials
   carousel (`components/ui/carousel.tsx`, shadcn's wrapper; keyboard
   and autoplay-with-pause-on-hover aren't reasonably hand-rollable)
+- `framer-motion` — the site's scroll/load motion system
+  (`src/lib/animations.ts`, `components/ui/animate-in.tsx`, the hero's
+  entrance sequence). CSS transitions/animations (already used for the
+  Sheet, Accordion, and card hover) can't do `whileInView`-triggered,
+  stagger-orchestrated reveals without hand-rolling an
+  IntersectionObserver + timing system per component — framer-motion
+  does it once, consistently, and respects `prefers-reduced-motion` via
+  `MotionConfig` instead of re-deriving that per component.
 
 No new major dependency (a new package, or a major version bump of an
 existing one) may be added without first being justified in this file:

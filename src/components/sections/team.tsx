@@ -2,21 +2,29 @@ import Image from "next/image";
 
 import { teamMembers } from "@/content/team";
 import { aboutContent } from "@/content/about";
+import { STAGGER_STEP_SECONDS } from "@/lib/animations";
 import { Section } from "@/components/ui/section";
+import { AnimateIn } from "@/components/ui/animate-in";
 
 function Team() {
   const { heading, emptyState } = aboutContent.team;
 
   return (
     <Section className="flex flex-col gap-10">
-      <h2 className="text-h2">{heading}</h2>
+      <AnimateIn>
+        <h2 className="text-h2">{heading}</h2>
+      </AnimateIn>
 
       {teamMembers.length === 0 ? (
         <p className="text-body max-w-2xl text-ink-secondary">{emptyState}</p>
       ) : (
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {teamMembers.map((member) => (
-            <div key={member.name} className="flex flex-col gap-3">
+          {teamMembers.map((member, index) => (
+            <AnimateIn
+              key={member.name}
+              delay={index * STAGGER_STEP_SECONDS}
+              className="flex flex-col gap-3"
+            >
               <Image
                 src={member.photo}
                 alt={member.name}
@@ -31,7 +39,7 @@ function Team() {
                 </p>
                 <p className="text-body">{member.bio}</p>
               </div>
-            </div>
+            </AnimateIn>
           ))}
         </div>
       )}

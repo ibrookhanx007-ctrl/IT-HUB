@@ -4,11 +4,13 @@
 
 import { useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
+import { useReducedMotion } from "framer-motion";
 import { Star } from "lucide-react";
 
 import { testimonials } from "@/content/testimonials";
 import { services } from "@/content/services";
 import { cn } from "@/lib/utils";
+import { AnimateIn } from "@/components/ui/animate-in";
 import { Section } from "@/components/ui/section";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -23,6 +25,7 @@ import {
 function Testimonials() {
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!api) return;
@@ -38,12 +41,18 @@ function Testimonials() {
 
   return (
     <Section className="flex flex-col gap-10">
-      <h2 className="text-h2">What Clients Say</h2>
+      <AnimateIn>
+        <h2 className="text-h2">What Clients Say</h2>
+      </AnimateIn>
 
       <Carousel
         setApi={setApi}
         opts={{ align: "start", loop: true }}
-        plugins={[Autoplay({ delay: 5000, stopOnMouseEnter: true })]}
+        plugins={
+          prefersReducedMotion
+            ? []
+            : [Autoplay({ delay: 5000, stopOnMouseEnter: true })]
+        }
       >
         <CarouselContent>
           {testimonials.map((testimonial) => {

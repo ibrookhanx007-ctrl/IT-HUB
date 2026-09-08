@@ -1,24 +1,30 @@
 import { whyUsPoints } from "@/content/why-us";
 import { homeContent } from "@/content/home";
+import { STAGGER_STEP_SECONDS } from "@/lib/animations";
 import { Section } from "@/components/ui/section";
 import { Icon } from "@/components/ui/icon";
+import { AnimateIn } from "@/components/ui/animate-in";
 
 function WhyChooseUs() {
   return (
     <Section className="flex flex-col gap-12">
-      <h2 className="text-h2">{homeContent.whyUsSection.heading}</h2>
+      <AnimateIn>
+        <h2 className="text-h2">{homeContent.whyUsSection.heading}</h2>
+      </AnimateIn>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {whyUsPoints.map((point) => (
-          <div key={point.title} className="flex flex-col gap-3">
-            <Icon
-              name={point.icon}
-              className="size-8 text-gold"
-              aria-hidden="true"
-            />
-            <h3 className="text-h4">{point.title}</h3>
-            <p className="text-body">{point.description}</p>
-          </div>
+        {whyUsPoints.map((point, index) => (
+          <AnimateIn key={point.title} delay={index * STAGGER_STEP_SECONDS}>
+            <div className="flex flex-col gap-3">
+              <Icon
+                name={point.icon}
+                className="size-8 text-gold"
+                aria-hidden="true"
+              />
+              <h3 className="text-h4">{point.title}</h3>
+              <p className="text-body">{point.description}</p>
+            </div>
+          </AnimateIn>
         ))}
       </div>
     </Section>

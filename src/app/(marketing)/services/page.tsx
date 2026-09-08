@@ -4,9 +4,11 @@ import { ArrowRight } from "lucide-react";
 
 import { services } from "@/content/services";
 import { servicesPageIntro } from "@/content/pages";
+import { STAGGER_STEP_SECONDS } from "@/lib/animations";
 import { Section } from "@/components/ui/section";
 import { Icon } from "@/components/ui/icon";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { AnimateIn } from "@/components/ui/animate-in";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -22,16 +24,19 @@ export default function ServicesPage() {
       <Breadcrumbs items={[{ label: "Services", href: "/services" }]} />
 
       <Section className="flex flex-col gap-4 pb-0">
-        <h1 className="text-h1">{servicesPageIntro.hero.heading}</h1>
-        <p className="text-body max-w-2xl">
-          {servicesPageIntro.hero.description}
-        </p>
+        <AnimateIn className="flex flex-col gap-4">
+          <h1 className="text-h1">{servicesPageIntro.hero.heading}</h1>
+          <p className="text-body max-w-2xl">
+            {servicesPageIntro.hero.description}
+          </p>
+        </AnimateIn>
       </Section>
 
       <Section as="div" className="flex flex-col">
-        {services.map((service) => (
-          <article
+        {services.map((service, index) => (
+          <AnimateIn
             key={service.slug}
+            delay={Math.min(index, 5) * STAGGER_STEP_SECONDS}
             className="flex flex-col gap-4 border-b border-navy-600 py-10 first:pt-0 last:border-b-0 last:pb-0 md:flex-row md:gap-8"
           >
             <Icon
@@ -53,7 +58,7 @@ export default function ServicesPage() {
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>
-          </article>
+          </AnimateIn>
         ))}
       </Section>
     </>

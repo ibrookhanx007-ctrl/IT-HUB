@@ -10,8 +10,11 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { portfolioItems } from "@/content/portfolio";
 import { services } from "@/content/services";
 import { portfolioPageIntro } from "@/content/pages";
+import { STAGGER_STEP_SECONDS, cardHoverClassName } from "@/lib/animations";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { AnimateIn } from "@/components/ui/animate-in";
 
 function PortfolioGrid() {
   const router = useRouter();
@@ -77,31 +80,37 @@ function PortfolioGrid() {
         </p>
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredItems.map((item) => {
+          {filteredItems.map((item, index) => {
             const service = services.find((s) => s.slug === item.service);
             return (
-              <Link
-                key={item.slug}
-                href={`/portfolio/${item.slug}`}
-                className="group block rounded-xl focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
-              >
-                <Card className="h-full gap-0 overflow-hidden py-0 transition-colors group-hover:border-gold">
-                  <Image
-                    src={item.image}
-                    alt={item.clientName}
-                    width={400}
-                    height={240}
-                    className="aspect-video w-full object-cover"
-                  />
-                  <div className="flex flex-col gap-2 p-6">
-                    <h3 className="text-h4">{item.clientName}</h3>
-                    <p className="text-small text-ink-secondary">
-                      {item.industry}
-                      {service ? ` · ${service.title}` : ""}
-                    </p>
-                  </div>
-                </Card>
-              </Link>
+              <AnimateIn key={item.slug} delay={index * STAGGER_STEP_SECONDS}>
+                <Link
+                  href={`/portfolio/${item.slug}`}
+                  className="group block rounded-xl focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+                >
+                  <Card
+                    className={cn(
+                      cardHoverClassName,
+                      "h-full gap-0 overflow-hidden py-0",
+                    )}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.clientName}
+                      width={400}
+                      height={240}
+                      className="aspect-video w-full object-cover"
+                    />
+                    <div className="flex flex-col gap-2 p-6">
+                      <h3 className="text-h4">{item.clientName}</h3>
+                      <p className="text-small text-ink-secondary">
+                        {item.industry}
+                        {service ? ` · ${service.title}` : ""}
+                      </p>
+                    </div>
+                  </Card>
+                </Link>
+              </AnimateIn>
             );
           })}
         </div>

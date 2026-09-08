@@ -16,6 +16,17 @@ function useCountUp(target: number, start: boolean) {
   useEffect(() => {
     if (!start) return;
 
+    // Reduced motion must disable the animation outright, not just
+    // shorten it — jump straight to the final number. Reading
+    // matchMedia and applying it here (rather than from a callback) is
+    // the same "sync with an external store" case as the rAF tick
+    // below, just synchronous instead of scheduled.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setValue(target);
+      return;
+    }
+
     let frame: number;
     const startTime = performance.now();
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sora, Inter } from "next/font/google";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import { siteConfig } from "@/content/site";
 import { getOrganizationSchema } from "@/lib/structured-data";
@@ -58,22 +59,28 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${headingSans.variable} ${bodySans.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-navy-900 font-body text-ink-primary antialiased">
-        <a
-          href="#main-content"
-          className="sr-only rounded-md bg-gold px-4 py-2 font-medium text-navy-900 focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50"
-        >
-          Skip to content
-        </a>
-        <JsonLd data={getOrganizationSchema()} />
-        <UtilityBar />
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <WhatsAppButton />
-        <BackToTop />
-        <Toaster />
+        {/* reducedMotion="user" makes every framer-motion animation
+            site-wide (AnimateIn, the hero's entrance sequence) obey
+            prefers-reduced-motion automatically — see also the CSS
+            kill switch in globals.css for non-framer-motion animation. */}
+        <MotionConfig reducedMotion="user">
+          <a
+            href="#main-content"
+            className="sr-only rounded-md bg-gold px-4 py-2 font-medium text-navy-900 focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50"
+          >
+            Skip to content
+          </a>
+          <JsonLd data={getOrganizationSchema()} />
+          <UtilityBar />
+          <Header />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <WhatsAppButton />
+          <BackToTop />
+          <Toaster />
+        </MotionConfig>
       </body>
     </html>
   );

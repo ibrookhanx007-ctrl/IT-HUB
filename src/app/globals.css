@@ -96,6 +96,27 @@ body {
   color: var(--color-ink-primary);
 }
 
+/* Site-wide motion kill switch. Covers every CSS transition/animation
+   (Sheet, Accordion, card hover, button press, the client-logo
+   marquee) — framer-motion's JS-driven animations (src/lib/animations.ts,
+   components/ui/animate-in.tsx) are handled separately via
+   <MotionConfig reducedMotion="user"> in the root layout, since this
+   media query can't reach inline styles it applies. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee {
+    animation: none !important;
+  }
+}
+
 /* Type scale — h1 through h4, body, small. Use these classes instead of
    ad-hoc text-size/weight/leading combinations. */
 @layer components {

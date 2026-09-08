@@ -1,7 +1,9 @@
 import Image from "next/image";
 
 import { clientLogos } from "@/content/clients";
+import { fadeIn } from "@/lib/animations";
 import { Section } from "@/components/ui/section";
+import { AnimateIn } from "@/components/ui/animate-in";
 
 // Duplicated once so the marquee can loop seamlessly at -50% translate.
 const logos = [...clientLogos, ...clientLogos];
@@ -9,7 +11,9 @@ const logos = [...clientLogos, ...clientLogos];
 function Clients() {
   return (
     <Section className="flex flex-col gap-8">
-      <h2 className="text-h4 text-center text-ink-muted">Trusted By</h2>
+      <AnimateIn variant={fadeIn}>
+        <h2 className="text-h4 text-center text-ink-muted">Trusted By</h2>
+      </AnimateIn>
 
       <div className="group overflow-hidden">
         <div className="flex w-max animate-marquee items-center gap-16 group-hover:[animation-play-state:paused]">

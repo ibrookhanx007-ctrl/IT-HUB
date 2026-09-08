@@ -7,10 +7,13 @@ import { services } from "@/content/services";
 import { serviceDetailLabels } from "@/content/pages";
 import { getServiceFaqItems } from "@/lib/faq";
 import { getServiceSchema } from "@/lib/structured-data";
+import { STAGGER_STEP_SECONDS, cardHoverClassName } from "@/lib/animations";
+import { cn } from "@/lib/utils";
 import { Section } from "@/components/ui/section";
 import { Icon } from "@/components/ui/icon";
 import { JsonLd } from "@/components/ui/json-ld";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { AnimateIn } from "@/components/ui/animate-in";
 import {
   Card,
   CardHeader,
@@ -78,15 +81,17 @@ export default async function ServiceDetailPage(
       />
 
       <Section className="flex flex-col gap-6 pb-0">
-        <Icon
-          name={service.icon}
-          className="size-12 text-gold"
-          aria-hidden="true"
-        />
-        <h1 className="text-h1 max-w-3xl">{service.title}</h1>
-        <p className="text-h4 max-w-2xl font-normal text-ink-secondary">
-          {service.shortDescription}
-        </p>
+        <AnimateIn className="flex flex-col gap-6">
+          <Icon
+            name={service.icon}
+            className="size-12 text-gold"
+            aria-hidden="true"
+          />
+          <h1 className="text-h1 max-w-3xl">{service.title}</h1>
+          <p className="text-h4 max-w-2xl font-normal text-ink-secondary">
+            {service.shortDescription}
+          </p>
+        </AnimateIn>
       </Section>
 
       <Section as="div" className="grid grid-cols-1 gap-12 lg:grid-cols-3">
@@ -115,36 +120,42 @@ export default async function ServiceDetailPage(
       </Section>
 
       <Section className="flex flex-col gap-8">
-        <h2 className="text-h3">{serviceDetailLabels.relatedHeading}</h2>
+        <AnimateIn>
+          <h2 className="text-h3">{serviceDetailLabels.relatedHeading}</h2>
+        </AnimateIn>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {related.map((relatedService) => (
-            <Link
+          {related.map((relatedService, index) => (
+            <AnimateIn
               key={relatedService.slug}
-              href={`/services/${relatedService.slug}`}
-              className="group block rounded-xl focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+              delay={index * STAGGER_STEP_SECONDS}
             >
-              <Card className="h-full transition-colors group-hover:border-gold">
-                <CardHeader>
-                  <Icon
-                    name={relatedService.icon}
-                    className="size-8 text-gold"
-                    aria-hidden="true"
-                  />
-                  <CardTitle as="h3" className="text-h4 mt-2">
-                    {relatedService.title}
-                  </CardTitle>
-                  <CardDescription>
-                    {relatedService.shortDescription}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
+              <Link
+                href={`/services/${relatedService.slug}`}
+                className="group block rounded-xl focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+              >
+                <Card className={cn(cardHoverClassName, "h-full")}>
+                  <CardHeader>
+                    <Icon
+                      name={relatedService.icon}
+                      className="size-8 text-gold"
+                      aria-hidden="true"
+                    />
+                    <CardTitle as="h3" className="text-h4 mt-2">
+                      {relatedService.title}
+                    </CardTitle>
+                    <CardDescription>
+                      {relatedService.shortDescription}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
+            </AnimateIn>
           ))}
         </div>
       </Section>
 
       <Section className="flex flex-col gap-6">
-        <div className="flex items-center justify-between gap-4">
+        <AnimateIn className="flex items-center justify-between gap-4">
           <h2 className="text-h3">{serviceDetailLabels.faqHeading}</h2>
           <Link
             href="/faq"
@@ -152,7 +163,7 @@ export default async function ServiceDetailPage(
           >
             {serviceDetailLabels.faqViewAllLabel}
           </Link>
-        </div>
+        </AnimateIn>
         <Accordion type="single" collapsible className="w-full">
           {faqItems.map((item) => (
             <AccordionItem
