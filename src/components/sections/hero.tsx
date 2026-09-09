@@ -32,7 +32,16 @@ function Hero() {
   const itemTransition = prefersReducedMotion ? { duration: 0 } : TRANSITION;
 
   return (
-    <Section className="flex flex-col items-start gap-8 py-24 md:py-32">
+    <Section className="relative flex flex-col items-start gap-8 overflow-hidden py-24 md:py-32">
+      {/* Decorative only (empty, no text/image) — animating it is safe
+          for LCP; see the --animate-glow comment in globals.css. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <div className="absolute top-1/2 left-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-gold blur-[120px]" />
+      </div>
+
       {/* display:contents keeps this out of the flex box model — Section's
           flex/gap layout still applies directly to the three real blocks
           below, this element exists only to propagate stagger timing. */}
