@@ -2,10 +2,15 @@ import Link from "next/link";
 
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
+import { isPlaceholder } from "@/lib/utils";
 import { Section } from "@/components/ui/section";
 
 function Footer() {
   const year = new Date().getFullYear();
+  const { address, phone, email } = siteConfig.contact;
+  const hasStreet = !isPlaceholder(address.line1);
+  const hasPhone = !isPlaceholder(phone);
+  const hasEmail = !isPlaceholder(email);
 
   return (
     <footer className="border-t border-navy-600 bg-navy-800">
@@ -62,13 +67,11 @@ function Footer() {
           </h3>
           <address className="text-small flex flex-col gap-2 text-ink-secondary not-italic">
             <span>
-              {siteConfig.contact.address.line1},{" "}
-              {siteConfig.contact.address.city},{" "}
-              {siteConfig.contact.address.region},{" "}
-              {siteConfig.contact.address.country}
+              {hasStreet && `${address.line1}, `}
+              {address.city}, {address.region}, {address.country}
             </span>
-            <span>{siteConfig.contact.phone}</span>
-            <span>{siteConfig.contact.email}</span>
+            {hasPhone && <span>{phone}</span>}
+            {hasEmail && <span>{email}</span>}
           </address>
         </div>
       </Section>

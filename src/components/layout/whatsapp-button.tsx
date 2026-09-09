@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 
 import { siteConfig } from "@/content/site";
-import { cn } from "@/lib/utils";
+import { cn, isPlaceholder } from "@/lib/utils";
 
 const SCROLL_THRESHOLD_PX = 400;
 
@@ -25,7 +25,11 @@ function WhatsAppButton() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (pathname === "/contact") return null;
+  // No real WhatsApp number yet — a live button would link to
+  // "wa.me/TODO: ...", a broken URL, so don't show it until one exists.
+  if (pathname === "/contact" || isPlaceholder(siteConfig.contact.whatsapp)) {
+    return null;
+  }
 
   const message = encodeURIComponent(
     `Hi ${siteConfig.name}, I'd like to know more about your services.`,
