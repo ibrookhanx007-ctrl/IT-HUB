@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 
 import { MobileNav } from "./mobile-nav";
+import { ThemeToggle } from "./theme-toggle";
 
 function Header() {
   return (
@@ -29,15 +30,19 @@ function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Button asChild>
-            <Link href={siteConfig.primaryCta.href}>
-              {siteConfig.primaryCta.label}
-            </Link>
-          </Button>
-        </div>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
 
-        <MobileNav />
+          <div className="hidden md:block">
+            <Button asChild>
+              <Link href={siteConfig.primaryCta.href}>
+                {siteConfig.primaryCta.label}
+              </Link>
+            </Button>
+          </div>
+
+          <MobileNav />
+        </div>
       </Section>
     </header>
   );

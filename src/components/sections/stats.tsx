@@ -47,7 +47,7 @@ function StatItem({ value, suffix, label, start }: Stat & { start: boolean }) {
   const count = useCountUp(value, start);
   return (
     <div className="flex flex-col items-center gap-2 text-center">
-      <span className="text-h1 text-gold">
+      <span className="text-h1 text-gold-ink">
         {count}
         {suffix}
       </span>

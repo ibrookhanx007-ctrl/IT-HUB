@@ -6,9 +6,15 @@ export const navyScale = [
 ];
 
 export const goldScale = [
-  { token: "gold", swatch: "bg-gold", label: "Base" },
+  { token: "gold", swatch: "bg-gold", label: "Base (backgrounds/borders)" },
   { token: "gold-hover", swatch: "bg-gold-hover", label: "Hover" },
   { token: "gold-muted", swatch: "bg-gold-muted", label: "Muted" },
+  { token: "gold-ink", swatch: "bg-gold-ink", label: "Text/icon color" },
+  {
+    token: "gold-ink-hover",
+    swatch: "bg-gold-ink-hover",
+    label: "Text/icon hover",
+  },
 ];
 
 export const inkScale = [

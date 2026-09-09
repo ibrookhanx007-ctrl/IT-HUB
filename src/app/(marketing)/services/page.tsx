@@ -41,7 +41,7 @@ export default function ServicesPage() {
           >
             <Icon
               name={service.icon}
-              className="size-10 shrink-0 text-gold"
+              className="size-10 shrink-0 text-gold-ink"
               aria-hidden="true"
             />
             <div className="flex flex-col gap-3">
@@ -52,7 +52,7 @@ export default function ServicesPage() {
               <p className="text-body">{service.longDescription[0]}</p>
               <Link
                 href={`/services/${service.slug}`}
-                className="inline-flex w-fit items-center gap-2 rounded-sm font-medium text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+                className="inline-flex w-fit items-center gap-2 rounded-sm font-medium text-gold-ink hover:text-gold-ink-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
               >
                 {servicesPageIntro.learnMoreLabel}
                 <ArrowRight className="size-4" aria-hidden="true" />

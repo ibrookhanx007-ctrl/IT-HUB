@@ -23,13 +23,13 @@ function Process() {
             delay={index * STAGGER_STEP_SECONDS}
             className="relative z-10 flex gap-4 pb-10 last:pb-0 md:flex-1 md:flex-col md:items-center md:pr-6 md:pb-0 md:text-center last:md:pr-0"
           >
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-gold bg-navy-900 font-heading font-bold text-gold">
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-gold bg-navy-900 font-heading font-bold text-gold-ink">
               {step.step}
             </div>
             <div className="flex flex-col gap-2 pt-1 md:items-center md:pt-4">
               <Icon
                 name={step.icon}
-                className="size-6 text-gold"
+                className="size-6 text-gold-ink"
                 aria-hidden="true"
               />
               <h3 className="text-h4">{step.title}</h3>

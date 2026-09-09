@@ -48,7 +48,7 @@ export default function ContactPage() {
               <h2 className="text-h4">{contactFieldLabels.phone}</h2>
               <a
                 href={`tel:${phone.replace(/\s/g, "")}`}
-                className="text-body w-fit rounded-sm text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                className="text-body w-fit rounded-sm text-gold-ink hover:text-gold-ink-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
               >
                 {phone}
               </a>
@@ -60,7 +60,7 @@ export default function ContactPage() {
               <h2 className="text-h4">{contactFieldLabels.email}</h2>
               <a
                 href={`mailto:${email}`}
-                className="text-body w-fit rounded-sm text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                className="text-body w-fit rounded-sm text-gold-ink hover:text-gold-ink-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
               >
                 {email}
               </a>

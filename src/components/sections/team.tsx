@@ -34,7 +34,7 @@ function Team() {
               />
               <div className="flex flex-col gap-1">
                 <h3 className="text-h4">{member.name}</h3>
-                <p className="text-small font-medium text-gold">
+                <p className="text-small font-medium text-gold-ink">
                   {member.role}
                 </p>
                 <p className="text-body">{member.bio}</p>

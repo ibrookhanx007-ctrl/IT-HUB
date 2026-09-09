@@ -57,6 +57,13 @@ marketing/lead-generation site: no user accounts, no database.
   IntersectionObserver + timing system per component — framer-motion
   does it once, consistently, and respects `prefers-reduced-motion` via
   `MotionConfig` instead of re-deriving that per component.
+- `next-themes` — the dark/light theme toggle
+  (`components/layout/theme-toggle.tsx`, `ThemeProvider` in
+  `app/layout.tsx`). Hand-rolling this means a blocking inline script
+  in `<head>` to set the theme before hydration (otherwise the page
+  flashes the wrong theme on load) plus `localStorage` persistence and
+  cross-tab sync — next-themes does all of that in ~150 lines with
+  first-class Next.js App Router support.
 
 No new major dependency (a new package, or a major version bump of an
 existing one) may be added without first being justified in this file:

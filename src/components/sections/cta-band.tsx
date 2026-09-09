@@ -21,10 +21,10 @@ function CtaBand({ heading, description }: CtaBandProps) {
         className="flex flex-col items-start gap-6 py-16 md:flex-row md:items-center md:justify-between"
       >
         <AnimateIn className="flex flex-col gap-2">
-          <h2 className="text-h2 text-navy-900">
+          <h2 className="text-h2 text-ink-on-accent">
             {heading ?? homeContent.ctaBand.heading}
           </h2>
-          <p className="text-body max-w-xl text-navy-900/80">
+          <p className="text-body max-w-xl text-ink-on-accent/80">
             {description ?? homeContent.ctaBand.description}
           </p>
         </AnimateIn>

@@ -35,7 +35,7 @@ function ServicesGrid() {
                 <CardHeader>
                   <Icon
                     name={service.icon}
-                    className="size-8 text-gold"
+                    className="size-8 text-gold-ink"
                     aria-hidden="true"
                   />
                   <CardTitle as="h3" className="text-h4 mt-2">

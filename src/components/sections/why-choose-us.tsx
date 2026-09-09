@@ -18,7 +18,7 @@ function WhyChooseUs() {
             <div className="flex flex-col gap-3">
               <Icon
                 name={point.icon}
-                className="size-8 text-gold"
+                className="size-8 text-gold-ink"
                 aria-hidden="true"
               />
               <h3 className="text-h4">{point.title}</h3>

@@ -12,12 +12,19 @@
  * Components must use these utilities instead of arbitrary values
  * (see AGENTS.md rule 2).
  *
- * The site has a single fixed dark-navy brand theme (no light/dark
- * toggle), so shadcn/ui's semantic slots (--color-background,
- * --color-primary, etc. — what its components are built against) are
- * aliased directly to our brand tokens below instead of shadcn's
- * default oklch palette. This is what makes `npx shadcn add <x>`
- * output the right colors with no further edits.
+ * Dark navy is the default brand theme; a light theme is layered on
+ * top via next-themes (components/layout/theme-toggle.tsx), which
+ * sets [data-theme="light"] on <html>. The values below are the DARK
+ * theme; the light theme's overrides live in the
+ * `:root[data-theme="light"]` block further down. Every component
+ * still just uses `bg-navy-900` / `text-ink-primary` / etc. — those
+ * names stay literal ("navy-900" isn't literally navy once the light
+ * override is active), only the values they resolve to change.
+ * shadcn/ui's semantic slots (--color-background, --color-primary,
+ * etc. — what its components are built against) are aliased to the
+ * brand tokens below instead of shadcn's default oklch palette. This
+ * is what makes `npx shadcn add <x>` output the right colors with no
+ * further edits.
  */
 @theme {
   /* Navy scale — background, surface, elevated surface, border */
@@ -26,17 +33,38 @@
   --color-navy-700: #16233d; /* elevated surface (modals, popovers) */
   --color-navy-600: #2a3b54; /* borders / dividers */
 
-  /* Gold accent scale — base, hover, muted */
+  /* Gold accent scale — base, hover, muted. Used for backgrounds/
+     borders/decorative fills and stays THE SAME across both themes
+     (dark ink on this gold is ~8.4:1 in either theme — see
+     --color-ink-on-accent below — so it never needs to shift). */
   --color-gold: #c9a961; /* primary accent */
   --color-gold-hover: #b4903f; /* hover / active state, deeper */
   --color-gold-muted: #8a7440; /* subtle accents, badges, icons */
+
+  /* Gold as TEXT/ICON color (not a background) is a different story:
+     plain gold text on a light background fails WCAG AA outright, so
+     this pair is theme-aware — same as gold/gold-hover in dark mode,
+     darkened for readability in the light override below. Use these
+     (not gold/gold-hover) for `text-*`/icon color; keep using
+     gold/gold-hover for `bg-*`/`border-*`. */
+  --color-gold-ink: var(--color-gold);
+  --color-gold-ink-hover: var(--color-gold-hover);
+
+  /* A handful of spots (primary button text, the CTA band, the
+     WhatsApp button, the skip-to-content link) put dark text directly
+     on the gold accent above. Since that gold never changes between
+     themes, this ink color doesn't either — it must NOT track
+     ink-primary/navy-900's flip, or it'd turn white-on-gold in light
+     mode. */
+  --color-ink-on-accent: #0a1120;
 
   /* Text scale — contrast-checked (WCAG AA) against --color-navy-900 */
   --color-ink-primary: #f5f7fa; /* ~17.6:1 on navy-900 */
   --color-ink-secondary: #b7c0d1; /* ~10.3:1 on navy-900 */
   --color-ink-muted: #8792a6; /* ~6.0:1 on navy-900 */
 
-  /* Semantic tokens */
+  /* Semantic tokens — light-theme values are deliberately different
+     shades, not just re-tinted; see the light override block. */
   --color-success: #34d399;
   --color-error: #f87171;
   --color-warning: #fb923c;
@@ -56,7 +84,7 @@
   --color-popover: var(--color-navy-700);
   --color-popover-foreground: var(--color-ink-primary);
   --color-primary: var(--color-gold);
-  --color-primary-foreground: var(--color-navy-900);
+  --color-primary-foreground: var(--color-ink-on-accent);
   --color-secondary: var(--color-navy-700);
   --color-secondary-foreground: var(--color-ink-primary);
   --color-muted: var(--color-navy-800);
@@ -64,9 +92,11 @@
   --color-accent: var(--color-navy-700);
   --color-accent-foreground: var(--color-ink-primary);
   --color-destructive: var(--color-error);
-  /* --color-error is a light/pastel red (chosen for text on navy), so
-     white text on a solid destructive fill fails WCAG AA (~2.8:1);
-     navy-900 clears it comfortably (~6.8:1). */
+  /* Unlike primary-foreground, this SHOULD track navy-900's flip:
+     --color-error is a light/pastel red in dark mode (so it needs
+     dark text — navy-900 clears it ~6.8:1) but becomes a deep solid
+     red in the light override (so it needs light text instead) —
+     navy-900 flips to exactly the right polarity for both. */
   --color-destructive-foreground: var(--color-navy-900);
   --color-border: var(--color-navy-600);
   --color-input: var(--color-navy-600);
@@ -107,6 +137,32 @@
       transform: scale(1.08);
     }
   }
+}
+
+/* Light theme — overrides the same custom properties `@theme` defined
+   above, scoped to when next-themes sets data-theme="light" on <html>
+   (components/layout/theme-toggle.tsx). Every `bg-navy-900` /
+   `text-ink-primary` / etc. utility in every component picks these up
+   automatically since Tailwind utilities just reference these
+   variables — no component changes needed. gold/gold-hover/gold-muted
+   and ink-on-accent are deliberately absent: they don't change
+   between themes (see the comments on them above). */
+:root[data-theme="light"] {
+  --color-navy-900: #ffffff; /* page background */
+  --color-navy-800: #f4f6f9; /* card / section surface */
+  --color-navy-700: #ffffff; /* elevated surface — white + shadow, not another gray */
+  --color-navy-600: #dde3ec; /* borders / dividers */
+
+  --color-gold-ink: #8a6a1f; /* ~5.1:1 on white — plain gold text fails AA */
+  --color-gold-ink-hover: #7d5f24; /* ~5.9:1 on white */
+
+  --color-ink-primary: #0a1120; /* ~18.9:1 on navy-900 (white) */
+  --color-ink-secondary: #475569; /* ~7.6:1 on navy-900 (white) */
+  --color-ink-muted: #64748b; /* ~4.8:1 on navy-900 (white) */
+
+  --color-success: #047857; /* ~5.5:1 on white */
+  --color-error: #b91c1c; /* ~6.5:1 on white */
+  --color-warning: #b45309; /* ~5.0:1 on white */
 }
 
 body {

@@ -56,7 +56,7 @@ export default async function PortfolioDetailPage(
       <Section className="flex flex-col gap-4 pb-0">
         <Link
           href="/portfolio"
-          className="text-small inline-flex w-fit items-center gap-2 rounded-sm font-medium text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+          className="text-small inline-flex w-fit items-center gap-2 rounded-sm font-medium text-gold-ink hover:text-gold-ink-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
         >
           <ArrowLeft className="size-4" aria-hidden="true" />
           {portfolioDetailLabels.backLabel}
@@ -98,7 +98,7 @@ export default async function PortfolioDetailPage(
             </h2>
             <Link
               href={`/services/${service.slug}`}
-              className="text-body inline-flex w-fit items-center gap-2 rounded-sm font-medium text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+              className="text-body inline-flex w-fit items-center gap-2 rounded-sm font-medium text-gold-ink hover:text-gold-ink-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
             >
               {service.title}
               <ArrowRight className="size-4" aria-hidden="true" />

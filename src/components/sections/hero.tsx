@@ -32,7 +32,7 @@ function Hero() {
   const itemTransition = prefersReducedMotion ? { duration: 0 } : TRANSITION;
 
   return (
-    <Section className="relative flex flex-col items-start gap-8 overflow-hidden py-24 md:py-32">
+    <Section className="relative flex flex-col items-start gap-6 overflow-hidden py-16 md:py-20">
       {/* Decorative only (empty, no text/image) — animating it is safe
           for LCP; see the --animate-glow comment in globals.css. */}
       <div
@@ -57,7 +57,7 @@ function Hero() {
         <motion.p
           variants={heroItem}
           transition={itemTransition}
-          className="text-small font-semibold tracking-wide text-gold uppercase"
+          className="text-small font-semibold tracking-wide text-gold-ink uppercase"
         >
           {siteConfig.tagline}
         </motion.p>

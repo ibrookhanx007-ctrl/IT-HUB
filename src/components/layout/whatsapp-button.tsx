@@ -42,7 +42,7 @@ function WhatsAppButton() {
       rel="noopener noreferrer"
       aria-label={`Chat with ${siteConfig.name} on WhatsApp`}
       className={cn(
-        "fixed right-6 bottom-6 z-30 flex size-14 items-center justify-center rounded-full bg-gold text-navy-900 shadow-lg transition-all hover:bg-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none",
+        "fixed right-6 bottom-6 z-30 flex size-14 items-center justify-center rounded-full bg-gold text-ink-on-accent shadow-lg transition-all hover:bg-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none",
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0",

@@ -84,7 +84,7 @@ export default async function ServiceDetailPage(
         <AnimateIn className="flex flex-col gap-6">
           <Icon
             name={service.icon}
-            className="size-12 text-gold"
+            className="size-12 text-gold-ink"
             aria-hidden="true"
           />
           <h1 className="text-h1 max-w-3xl">{service.title}</h1>
@@ -109,7 +109,7 @@ export default async function ServiceDetailPage(
             {service.deliverables.map((item) => (
               <li key={item} className="text-body flex items-start gap-2">
                 <Check
-                  className="mt-1 size-4 shrink-0 text-gold"
+                  className="mt-1 size-4 shrink-0 text-gold-ink"
                   aria-hidden="true"
                 />
                 <span>{item}</span>
@@ -137,7 +137,7 @@ export default async function ServiceDetailPage(
                   <CardHeader>
                     <Icon
                       name={relatedService.icon}
-                      className="size-8 text-gold"
+                      className="size-8 text-gold-ink"
                       aria-hidden="true"
                     />
                     <CardTitle as="h3" className="text-h4 mt-2">
@@ -159,7 +159,7 @@ export default async function ServiceDetailPage(
           <h2 className="text-h3">{serviceDetailLabels.faqHeading}</h2>
           <Link
             href="/faq"
-            className="text-small inline-flex w-fit shrink-0 items-center gap-2 rounded-sm font-medium text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+            className="text-small inline-flex w-fit shrink-0 items-center gap-2 rounded-sm font-medium text-gold-ink hover:text-gold-ink-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
           >
             {serviceDetailLabels.faqViewAllLabel}
           </Link>

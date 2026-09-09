@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, Inter } from "next/font/google";
 import { MotionConfig } from "framer-motion";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { siteConfig } from "@/content/site";
 import { getOrganizationSchema } from "@/lib/structured-data";
@@ -57,30 +58,46 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${headingSans.variable} ${bodySans.variable} h-full`}
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-navy-900 font-body text-ink-primary antialiased">
-        {/* reducedMotion="user" makes every framer-motion animation
-            site-wide (AnimateIn, the hero's entrance sequence) obey
-            prefers-reduced-motion automatically — see also the CSS
-            kill switch in globals.css for non-framer-motion animation. */}
-        <MotionConfig reducedMotion="user">
-          <a
-            href="#main-content"
-            className="sr-only rounded-md bg-gold px-4 py-2 font-medium text-navy-900 focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50"
-          >
-            Skip to content
-          </a>
-          <JsonLd data={getOrganizationSchema()} />
-          <UtilityBar />
-          <Header />
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <WhatsAppButton />
-          <BackToTop />
-          <Toaster />
-        </MotionConfig>
+        {/* attribute="data-theme" matches the [data-theme="light"]
+            override in globals.css; defaultTheme="dark" keeps the
+            brand's navy look as the default. next-themes injects a
+            blocking inline script so the right theme applies before
+            hydration — suppressHydrationWarning on <html> above is
+            required because of that (the server can't know the
+            visitor's stored preference, so its render legitimately
+            differs from the client's first paint). */}
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="dark"
+          themes={["dark", "light"]}
+          enableSystem={false}
+        >
+          {/* reducedMotion="user" makes every framer-motion animation
+              site-wide (AnimateIn, the hero's entrance sequence) obey
+              prefers-reduced-motion automatically — see also the CSS
+              kill switch in globals.css for non-framer-motion animation. */}
+          <MotionConfig reducedMotion="user">
+            <a
+              href="#main-content"
+              className="sr-only rounded-md bg-gold px-4 py-2 font-medium text-ink-on-accent focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50"
+            >
+              Skip to content
+            </a>
+            <JsonLd data={getOrganizationSchema()} />
+            <UtilityBar />
+            <Header />
+            <main id="main-content" className="flex-1">
+              {children}
+            </main>
+            <Footer />
+            <WhatsAppButton />
+            <BackToTop />
+            <Toaster />
+          </MotionConfig>
+        </ThemeProvider>
       </body>
     </html>
   );

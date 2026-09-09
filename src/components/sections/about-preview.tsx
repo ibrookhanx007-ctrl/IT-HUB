@@ -15,7 +15,7 @@ function AboutPreview() {
         <p className="text-body max-w-2xl">{paragraph}</p>
         <Link
           href={cta.href}
-          className="text-body inline-flex w-fit items-center gap-2 rounded-sm font-medium text-gold hover:text-gold-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+          className="text-body inline-flex w-fit items-center gap-2 rounded-sm font-medium text-gold-ink hover:text-gold-ink-hover focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
         >
           {cta.label}
           <ArrowRight className="size-4" aria-hidden="true" />

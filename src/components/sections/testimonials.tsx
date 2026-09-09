@@ -73,7 +73,7 @@ function Testimonials() {
                           className={cn(
                             "size-4",
                             index < testimonial.rating
-                              ? "fill-gold text-gold"
+                              ? "fill-gold text-gold-ink"
                               : "text-navy-600",
                           )}
                         />
@@ -94,7 +94,7 @@ function Testimonials() {
                         {testimonial.city}
                       </span>
                       {service && (
-                        <span className="text-small text-gold">
+                        <span className="text-small text-gold-ink">
                           {service.title}
                         </span>
                       )}

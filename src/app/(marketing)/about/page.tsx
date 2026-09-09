@@ -73,7 +73,7 @@ export default function AboutPage() {
             >
               <Icon
                 name={value.icon}
-                className="size-8 text-gold"
+                className="size-8 text-gold-ink"
                 aria-hidden="true"
               />
               <h3 className="text-h4">{value.title}</h3>
