@@ -10,7 +10,10 @@ import { ThemeToggle } from "./theme-toggle";
 function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-navy-600 bg-navy-900/95 backdrop-blur supports-[backdrop-filter]:bg-navy-900/80">
-      <Section as="div" className="flex items-center justify-between py-4">
+      <Section
+        as="div"
+        className="flex items-center justify-between py-3 md:py-4"
+      >
         <Link
           href="/"
           className="text-h4 rounded-sm focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
@@ -18,7 +21,7 @@ function Header() {
           {siteConfig.name}
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
@@ -33,7 +36,7 @@ function Header() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
 
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Button asChild>
               <Link href={siteConfig.primaryCta.href}>
                 {siteConfig.primaryCta.label}
