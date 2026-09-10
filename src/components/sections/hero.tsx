@@ -89,6 +89,22 @@ function Hero() {
             </Link>
           </Button>
         </motion.div>
+
+        <motion.div
+          variants={heroItem}
+          transition={itemTransition}
+          className="flex flex-wrap items-center gap-x-5 gap-y-2"
+        >
+          {siteConfig.nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-small rounded-sm text-ink-muted hover:text-ink-primary focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </motion.div>
       </motion.div>
     </Section>
   );
