@@ -25,13 +25,13 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <AboutPreview />
       <ServicesGrid />
       <Stats />
       <WhyChooseUs />
       <Process />
       <Testimonials />
       <Clients />
-      <AboutPreview />
       <CtaBand />
     </>
   );
