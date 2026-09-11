@@ -7,7 +7,7 @@ export const teamMembers: TeamMember[] = [
     role: "CEO",
     department: "IT Services",
     bio: "Leads IT HUB Corporation's IT and digital work end to end — software development, IT infrastructure, e-commerce, and digital marketing.",
-    photo: "/team/ibrar-khan.svg",
+    photo: "/team/ibrar-khan.webp",
     phone: "0317 9898769",
     expertise: [
       "it-software-solutions",
@@ -23,7 +23,7 @@ export const teamMembers: TeamMember[] = [
     role: "Founder",
     department: "Tax Services",
     bio: "Handles all tax-related matters for clients — FBR and KPRA compliance, filings, and accounting.",
-    photo: "/team/azlan-manzoor.svg",
+    photo: "/team/azlan-manzoor.webp",
     phone: "0313 1541054",
     expertise: [
       "tax-accounting",
