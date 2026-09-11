@@ -52,6 +52,8 @@ export interface PortfolioItem {
 export interface TeamMember {
   name: string;
   role: string;
+  /** Service area shown as a badge above the name, e.g. "IT Services". */
+  department?: string;
   bio?: string;
   /** Path under public/, e.g. "/team/name.jpg". */
   photo: string;

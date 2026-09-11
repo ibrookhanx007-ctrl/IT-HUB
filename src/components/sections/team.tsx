@@ -34,6 +34,11 @@ function Team() {
                 className="aspect-square w-full rounded-xl object-cover"
               />
               <div className="flex flex-col gap-1">
+                {member.department && (
+                  <span className="text-small mb-1 w-fit rounded-full border border-gold/40 bg-gold/10 px-3 py-1 font-semibold tracking-wide text-gold-ink uppercase">
+                    {member.department}
+                  </span>
+                )}
                 <h3 className="text-h4">{member.name}</h3>
                 <p className="text-small font-medium text-gold-ink">
                   {member.role}
