@@ -3,6 +3,7 @@ import type { Service } from "@/types";
 export const fbrKpraCompliance: Service = {
   slug: "fbr-kpra-compliance",
   title: "FBR & KPRA Compliance",
+  category: "Tax Services",
   shortDescription:
     "Registration and compliance with FBR and KPRA, handled by people who deal with both regularly.",
   longDescription: [

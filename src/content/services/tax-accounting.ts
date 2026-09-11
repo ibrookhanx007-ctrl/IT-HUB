@@ -3,6 +3,7 @@ import type { Service } from "@/types";
 export const taxAccounting: Service = {
   slug: "tax-accounting",
   title: "Tax & Accounting",
+  category: "Tax Services",
   shortDescription:
     "Monthly bookkeeping and tax filing that keeps you compliant without eating into your week.",
   longDescription: [

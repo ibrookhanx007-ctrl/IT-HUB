@@ -3,6 +3,7 @@ import type { Service } from "@/types";
 export const posInvoicing: Service = {
   slug: "pos-invoicing",
   title: "POS & Invoicing",
+  category: "IT & Digital Services",
   shortDescription:
     "Point-of-sale and invoicing systems that record every sale correctly the first time.",
   longDescription: [

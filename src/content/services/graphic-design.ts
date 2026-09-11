@@ -3,6 +3,7 @@ import type { Service } from "@/types";
 export const graphicDesign: Service = {
   slug: "graphic-design",
   title: "Graphic Design",
+  category: "IT & Digital Services",
   shortDescription:
     "Logos, brand identity, and marketing materials that look like a real company, because you are one.",
   longDescription: [

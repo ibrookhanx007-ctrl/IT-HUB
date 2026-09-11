@@ -4,9 +4,12 @@ export interface ServiceSeo {
   keywords: string[];
 }
 
+export type ServiceCategory = "IT & Digital Services" | "Tax Services";
+
 export interface Service {
   slug: string;
   title: string;
+  category: ServiceCategory;
   /** One line, for service cards. */
   shortDescription: string;
   /** 2-3 paragraphs, one string per paragraph. */

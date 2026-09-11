@@ -3,6 +3,7 @@ import type { Service } from "@/types";
 export const ecommerceSolutions: Service = {
   slug: "ecommerce-solutions",
   title: "E-Commerce Solutions",
+  category: "IT & Digital Services",
   shortDescription:
     "Online stores built to actually process orders, payments, and inventory, not just display products.",
   longDescription: [

@@ -3,6 +3,7 @@ import type { Service } from "@/types";
 export const appealsLegalSupport: Service = {
   slug: "appeals-legal-support",
   title: "Appeals & Legal Support",
+  category: "Tax Services",
   shortDescription:
     "Representation when FBR or KPRA raises an assessment you don't agree with.",
   longDescription: [

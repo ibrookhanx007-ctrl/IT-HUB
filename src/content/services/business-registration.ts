@@ -3,6 +3,7 @@ import type { Service } from "@/types";
 export const businessRegistration: Service = {
   slug: "business-registration",
   title: "Business Registration",
+  category: "Tax Services",
   shortDescription:
     "From choosing a legal structure to a registered NTN, handled start to finish.",
   longDescription: [

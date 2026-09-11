@@ -3,6 +3,7 @@ import type { Service } from "@/types";
 export const accountingFinancialServices: Service = {
   slug: "accounting-financial-services",
   title: "Accounting & Financial Services",
+  category: "Tax Services",
   shortDescription:
     "Financial statements, audits, and reporting that hold up to a bank, investor, or auditor.",
   longDescription: [
