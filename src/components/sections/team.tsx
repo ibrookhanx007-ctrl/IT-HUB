@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Phone } from "lucide-react";
 
 import { teamMembers } from "@/content/team";
 import { aboutContent } from "@/content/about";
@@ -18,7 +19,7 @@ function Team() {
       {teamMembers.length === 0 ? (
         <p className="text-body max-w-2xl text-ink-secondary">{emptyState}</p>
       ) : (
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid max-w-2xl grid-cols-1 gap-8 sm:grid-cols-2">
           {teamMembers.map((member, index) => (
             <AnimateIn
               key={member.name}
@@ -37,7 +38,16 @@ function Team() {
                 <p className="text-small font-medium text-gold-ink">
                   {member.role}
                 </p>
-                <p className="text-body">{member.bio}</p>
+                {member.bio && <p className="text-body">{member.bio}</p>}
+                {member.phone && (
+                  <a
+                    href={`tel:${member.phone.replace(/\s/g, "")}`}
+                    className="text-small mt-1 inline-flex w-fit items-center gap-1.5 rounded-sm text-ink-secondary hover:text-ink-primary focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                  >
+                    <Phone className="size-3.5" aria-hidden="true" />
+                    {member.phone}
+                  </a>
+                )}
               </div>
             </AnimateIn>
           ))}

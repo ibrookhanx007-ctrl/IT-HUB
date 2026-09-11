@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
@@ -19,7 +20,16 @@ function Footer() {
         className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4"
       >
         <div className="flex flex-col gap-4">
-          <span className="text-h4">{siteConfig.name}</span>
+          <span className="text-h4 flex items-center gap-2.5">
+            <Image
+              src="/logo-mark.png"
+              alt=""
+              width={585}
+              height={480}
+              className="h-8 w-auto"
+            />
+            {siteConfig.name}
+          </span>
           <p className="text-small text-ink-secondary">
             {siteConfig.description}
           </p>

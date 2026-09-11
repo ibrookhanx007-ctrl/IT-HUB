@@ -52,9 +52,11 @@ export interface PortfolioItem {
 export interface TeamMember {
   name: string;
   role: string;
-  bio: string;
+  bio?: string;
   /** Path under public/, e.g. "/team/name.jpg". */
   photo: string;
+  /** Displayed as-is and used to build a tel: link, e.g. "0317 9898769". */
+  phone?: string;
   linkedin?: string;
 }
 

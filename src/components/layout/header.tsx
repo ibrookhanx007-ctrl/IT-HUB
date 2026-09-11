@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { siteConfig } from "@/content/site";
 import { Button } from "@/components/ui/button";
@@ -16,8 +17,16 @@ function Header() {
       >
         <Link
           href="/"
-          className="text-h4 rounded-sm focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
+          className="text-h4 flex items-center gap-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 focus-visible:outline-none"
         >
+          <Image
+            src="/logo-mark.png"
+            alt=""
+            width={585}
+            height={480}
+            priority
+            className="h-8 w-auto"
+          />
           {siteConfig.name}
         </Link>
 
