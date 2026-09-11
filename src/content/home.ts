@@ -20,6 +20,7 @@ export const homeContent: HomeContent = {
     cta: { label: "More about us", href: "/about" },
     highlights: [
       { icon: "MapPin", label: "Based in Mardan, KP" },
+      { icon: "Code", label: "In-house IT & software team" },
       { icon: "ShieldCheck", label: "FBR & KPRA compliant" },
       { icon: "Clock", label: "One business day response" },
     ],
