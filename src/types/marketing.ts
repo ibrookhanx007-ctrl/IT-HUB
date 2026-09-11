@@ -50,6 +50,8 @@ export interface PortfolioItem {
 }
 
 export interface TeamMember {
+  /** URL segment for /about/team/[slug]. */
+  slug: string;
   name: string;
   role: string;
   /** Service area shown as a badge above the name, e.g. "IT Services". */
@@ -59,6 +61,8 @@ export interface TeamMember {
   photo: string;
   /** Displayed as-is and used to build a tel: link, e.g. "0317 9898769". */
   phone?: string;
+  /** Slugs from src/content/services this person handles, shown on their profile. */
+  expertise?: string[];
   linkedin?: string;
 }
 
