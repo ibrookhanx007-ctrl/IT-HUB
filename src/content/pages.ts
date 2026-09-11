@@ -39,11 +39,11 @@ export const portfolioPageIntro: PortfolioPageContent = {
   hero: {
     heading: "Our Work",
     description:
-      "A look at the kind of work we do, filtered by service. Case studies below are illustrative until real client work is published here.",
+      "A look at the kind of work we do, organized by service. We're adding real case studies here as projects wrap up.",
   },
   filterAllLabel: "All",
   viewCaseStudyLabel: "View case study",
-  emptyStateMessage: "No case studies for this service yet — check back soon.",
+  emptyStateMessage: "No case studies published yet — check back soon.",
 };
 
 export const portfolioDetailLabels: PortfolioDetailLabels = {
