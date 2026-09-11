@@ -23,6 +23,11 @@ export interface HomeContent {
     heading: string;
     paragraph: string;
     cta: CtaLink;
+    highlights: {
+      /** lucide-react icon name, e.g. "MapPin". */
+      icon: string;
+      label: string;
+    }[];
   };
   ctaBand: {
     heading: string;
