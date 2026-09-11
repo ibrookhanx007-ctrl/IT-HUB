@@ -9,18 +9,24 @@ import { posInvoicing } from "./pos-invoicing";
 import { fbrKpraCompliance } from "./fbr-kpra-compliance";
 import { accountingFinancialServices } from "./accounting-financial-services";
 import { appealsLegalSupport } from "./appeals-legal-support";
+import { webDevelopment } from "./web-development";
+import { videoEditingCommercialAds } from "./video-editing-commercial-ads";
+import { aiAutomation } from "./ai-automation";
 
 // One file per service (each under 200 lines — see AGENTS.md rule 7),
 // aggregated here so `import { services } from "@/content/services"`
 // keeps working unchanged everywhere it's already used.
 export const services: Service[] = [
   itSoftwareSolutions,
-  taxAccounting,
-  businessRegistration,
+  webDevelopment,
   digitalMarketing,
   graphicDesign,
   ecommerceSolutions,
   posInvoicing,
+  videoEditingCommercialAds,
+  aiAutomation,
+  taxAccounting,
+  businessRegistration,
   fbrKpraCompliance,
   accountingFinancialServices,
   appealsLegalSupport,

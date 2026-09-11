@@ -8,7 +8,7 @@ export const homeContent: HomeContent = {
   servicesSection: {
     heading: "Our Services",
     description:
-      "Ten service lines covering IT, tax, and business operations — one point of contact instead of five separate vendors.",
+      "Thirteen service lines covering IT, tax, and business operations — one point of contact instead of five separate vendors.",
   },
   whyUsSection: {
     heading: "Why Choose Us",

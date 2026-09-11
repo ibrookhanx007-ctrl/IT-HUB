@@ -15,10 +15,13 @@ export const teamMembers: TeamMember[] = [
     phone: "0317 9898769",
     expertise: [
       "it-software-solutions",
+      "web-development",
       "ecommerce-solutions",
       "digital-marketing",
       "graphic-design",
       "pos-invoicing",
+      "video-editing-commercial-ads",
+      "ai-automation",
     ],
   },
   {

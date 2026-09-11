@@ -18,7 +18,7 @@ export const servicesPageIntro: ServicesPageContent = {
   hero: {
     heading: "Our Services",
     description:
-      "Ten service lines covering IT, tax, and business operations. Explore each one below, or get in touch and we'll point you to the right one.",
+      "Thirteen service lines covering IT, tax, and business operations. Explore each one below, or get in touch and we'll point you to the right one.",
   },
   learnMoreLabel: "Learn more",
 };
