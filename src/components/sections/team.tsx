@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 
 import { teamMembers } from "@/content/team";
 import { aboutContent } from "@/content/about";
@@ -53,6 +53,10 @@ function Team() {
                     {member.role}
                   </p>
                   {member.bio && <p className="text-body">{member.bio}</p>}
+                </div>
+                <div className="mt-1 flex items-center gap-1.5 border-t border-navy-600 pt-3 text-small font-medium text-gold-ink group-hover:text-gold-ink-hover">
+                  View Profile
+                  <ArrowRight className="size-3.5" aria-hidden="true" />
                 </div>
               </Link>
               {member.phone && (

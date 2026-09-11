@@ -56,7 +56,10 @@ export interface TeamMember {
   role: string;
   /** Service area shown as a badge above the name, e.g. "IT Services". */
   department?: string;
+  /** One line, shown on the team card. */
   bio?: string;
+  /** 1-2 paragraphs, shown as "Professional Biography" on the profile page. Falls back to bio. */
+  about?: string[];
   /** Path under public/, e.g. "/team/name.jpg". */
   photo: string;
   /** Displayed as-is and used to build a tel: link, e.g. "0317 9898769". */
