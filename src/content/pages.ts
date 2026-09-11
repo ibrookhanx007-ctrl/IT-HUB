@@ -43,7 +43,14 @@ export const portfolioPageIntro: PortfolioPageContent = {
   },
   filterAllLabel: "All",
   viewCaseStudyLabel: "View case study",
-  emptyStateMessage: "No case studies published yet — check back soon.",
+  emptyStateMessage: "No case studies for this service yet — check back soon.",
+  emptyState: {
+    heading: "Case studies coming soon",
+    description:
+      "We're a growing team, so this page is still empty — real client work will be published here as projects wrap up. In the meantime, here's the kind of work we take on:",
+    ctaLabel: "Get in touch",
+    ctaHref: "/contact",
+  },
 };
 
 export const portfolioDetailLabels: PortfolioDetailLabels = {

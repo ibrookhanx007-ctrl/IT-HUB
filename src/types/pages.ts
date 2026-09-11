@@ -26,7 +26,15 @@ export interface ServiceDetailLabels {
 export interface PortfolioPageContent extends PageIntro {
   filterAllLabel: string;
   viewCaseStudyLabel: string;
+  /** Shown when a service filter has no matches but other case studies exist. */
   emptyStateMessage: string;
+  /** Shown when no case studies have been published at all yet. */
+  emptyState: {
+    heading: string;
+    description: string;
+    ctaLabel: string;
+    ctaHref: string;
+  };
 }
 
 export interface PortfolioDetailLabels {
