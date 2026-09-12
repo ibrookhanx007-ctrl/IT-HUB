@@ -35,13 +35,15 @@ function Team() {
                   cardHoverClassName,
                 )}
               >
-                <Image
-                  src={member.photo}
-                  alt={member.name}
-                  width={200}
-                  height={200}
-                  className="aspect-square w-full rounded-xl object-cover"
-                />
+                <div className="overflow-hidden rounded-xl">
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    width={200}
+                    height={200}
+                    className="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
                 <div className="flex flex-col gap-1">
                   {member.department && (
                     <span className="text-small mb-1 w-fit rounded-full border border-gold/40 bg-gold/10 px-3 py-1 font-semibold tracking-wide text-gold-ink uppercase">

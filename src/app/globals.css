@@ -121,20 +121,20 @@
   }
 
   /* Hero background glow (components/sections/hero.tsx) — a decorative,
-     empty layer (no text/image), so animating its opacity never
-     delays Largest Contentful Paint the way animating real content
-     would. Slow and subtle on purpose: a "breathing" accent, not
-     motion that competes with the headline. */
+     empty layer (no text/image), so animating its opacity/transform
+     never delays Largest Contentful Paint the way animating real
+     content would. Slow and subtle on purpose: a "breathing", gently
+     floating accent, not motion that competes with the headline. */
   --animate-glow: glow 8s ease-in-out infinite;
   @keyframes glow {
     0%,
     100% {
       opacity: 0.12;
-      transform: scale(1);
+      transform: scale(1) translateY(0);
     }
     50% {
       opacity: 0.24;
-      transform: scale(1.08);
+      transform: scale(1.08) translateY(-14px);
     }
   }
 }

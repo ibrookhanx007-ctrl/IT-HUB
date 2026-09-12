@@ -151,7 +151,7 @@ function PortfolioGrid() {
                       alt={item.clientName}
                       width={400}
                       height={240}
-                      className="aspect-video w-full object-cover"
+                      className="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="flex flex-col gap-2 p-6">
                       <h3 className="text-h4">{item.clientName}</h3>

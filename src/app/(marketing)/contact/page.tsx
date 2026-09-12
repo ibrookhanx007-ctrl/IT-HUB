@@ -3,8 +3,10 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
 import { contactPageIntro, contactFieldLabels } from "@/content/pages";
 import { isPlaceholder } from "@/lib/utils";
+import { STAGGER_STEP_SECONDS } from "@/lib/animations";
 import { Section } from "@/components/ui/section";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { AnimateIn } from "@/components/ui/animate-in";
 import { ContactForm } from "@/components/sections/contact-form";
 import { OfficeMap } from "@/components/sections/office-map";
 
@@ -27,14 +29,16 @@ export default function ContactPage() {
       <Breadcrumbs items={[{ label: "Contact", href: "/contact" }]} />
 
       <Section className="flex flex-col gap-4 pb-0">
-        <h1 className="text-h1">{contactPageIntro.hero.heading}</h1>
-        <p className="text-body max-w-2xl">
-          {contactPageIntro.hero.description}
-        </p>
+        <AnimateIn className="flex flex-col gap-4">
+          <h1 className="text-h1">{contactPageIntro.hero.heading}</h1>
+          <p className="text-body max-w-2xl">
+            {contactPageIntro.hero.description}
+          </p>
+        </AnimateIn>
       </Section>
 
       <Section as="div" className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-        <div className="flex flex-col gap-8">
+        <AnimateIn className="flex flex-col gap-8">
           <div className="flex flex-col gap-2">
             <h2 className="text-h4">{contactFieldLabels.address}</h2>
             <p className="text-body">
@@ -77,13 +81,17 @@ export default function ContactPage() {
               ))}
             </ul>
           </div>
-        </div>
+        </AnimateIn>
 
-        <ContactForm />
+        <AnimateIn delay={STAGGER_STEP_SECONDS}>
+          <ContactForm />
+        </AnimateIn>
       </Section>
 
       <Section as="div" className="pt-0">
-        <OfficeMap />
+        <AnimateIn>
+          <OfficeMap />
+        </AnimateIn>
       </Section>
     </>
   );
