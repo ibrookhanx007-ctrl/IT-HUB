@@ -6,7 +6,14 @@ import { AnimateIn } from "@/components/ui/animate-in";
 
 function Process() {
   return (
-    <Section className="flex flex-col gap-12">
+    <Section className="relative flex flex-col gap-12 overflow-hidden">
+      {/* Decorative only — same treatment as the Services glow, mirrored
+          to the left side for a little rhythm as you scroll down. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/3 -left-32 size-[26rem] rounded-full bg-gold/[0.05] blur-[100px]"
+      />
+
       <AnimateIn>
         <h2 className="text-h2">How We Work</h2>
       </AnimateIn>

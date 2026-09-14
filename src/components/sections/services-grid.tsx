@@ -19,7 +19,15 @@ const CATEGORIES: ServiceCategory[] = ["IT & Digital Services", "Tax Services"];
 
 function ServicesGrid() {
   return (
-    <Section className="flex flex-col gap-12">
+    <Section className="relative flex flex-col gap-12 overflow-hidden">
+      {/* Decorative only — breaks up the flat background behind a dense
+          grid of cards; blurred and low-opacity enough to never compete
+          with card contrast or text legibility. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 -right-32 size-[28rem] rounded-full bg-gold/[0.06] blur-[100px]"
+      />
+
       <AnimateIn className="flex flex-col gap-4">
         <h2 className="text-h2">{homeContent.servicesSection.heading}</h2>
         <p className="text-body max-w-2xl">

@@ -21,7 +21,7 @@ import { Section } from "@/components/ui/section";
 // opacity (just offset by `y`), so it paints immediately instead of
 // waiting on hydration + framer-motion to lift it out of opacity: 0.
 const heroItem: Variants = {
-  hidden: { y: 24 },
+  hidden: { y: 36 },
   visible: { y: 0 },
 };
 
