@@ -32,20 +32,31 @@ function Hero() {
   const prefersReducedMotion = useReducedMotion();
   const itemTransition = prefersReducedMotion ? { duration: 0 } : TRANSITION;
 
+  // Splits the slogan so its last word can carry the gold accent —
+  // styling only, the copy itself still comes from siteConfig.
+  const sloganWords = siteConfig.slogan.split(" ");
+  const sloganLead = sloganWords.slice(0, -1).join(" ");
+  const sloganAccent = sloganWords.at(-1);
+
   return (
-    <Section className="relative flex flex-col items-start gap-5 overflow-hidden py-10 md:py-14">
-      {/* Decorative only (empty, no text/image) — animating it is safe
-          for LCP; see the --animate-glow comment in globals.css. */}
+    <Section className="relative overflow-hidden py-14 md:py-20">
+      {/* Decorative only — a starfield-style dot grid plus a large
+          softly-lit sphere standing in for a literal photo. Both are
+          empty layers (no text/image), so animating/painting them
+          never delays Largest Contentful Paint. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
-        <div className="absolute top-1/2 left-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-gold blur-[120px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(201,169,97,0.35)_1px,transparent_1px)] bg-[length:28px_28px] opacity-20" />
+        <div className="absolute top-1/2 left-1/4 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 animate-glow rounded-full bg-gold blur-[120px]" />
+        <div className="absolute top-1/2 -right-24 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_32%_28%,var(--color-gold)_0%,var(--color-navy-700)_45%,var(--color-navy-900)_75%)] opacity-70 blur-[2px] md:h-[38rem] md:w-[38rem]" />
       </div>
 
-      {/* display:contents keeps this out of the flex box model — Section's
-          flex/gap layout still applies directly to the four real blocks
-          below, this element exists only to propagate stagger timing. */}
+      {/* Sits above the decorative absolute layer via normal DOM order
+          (no z-index juggling needed) and carries the real layout —
+          this element also propagates the stagger timing to its
+          three children. */}
       <motion.div
         initial="hidden"
         animate="visible"
@@ -53,7 +64,7 @@ function Hero() {
         transition={{
           staggerChildren: prefersReducedMotion ? 0 : STAGGER_STEP_SECONDS,
         }}
-        className="contents"
+        className="relative flex flex-col items-start gap-5"
       >
         <motion.div
           variants={heroItem}
@@ -72,11 +83,11 @@ function Hero() {
         <motion.div
           variants={heroItem}
           transition={itemTransition}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-2"
         >
-          <h1 className="text-h1 max-w-3xl">{siteConfig.name}</h1>
-          <p className="text-h3 max-w-2xl text-ink-secondary">
-            {siteConfig.slogan}
+          <h1 className="text-h1 max-w-2xl">{siteConfig.name}</h1>
+          <p className="text-h1 max-w-2xl text-ink-secondary">
+            {sloganLead} <span className="text-gold-ink">{sloganAccent}</span>
           </p>
         </motion.div>
 
