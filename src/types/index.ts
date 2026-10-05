@@ -9,5 +9,3 @@ export * from "./home";
 export * from "./about";
 export * from "./marketing";
 export * from "./legal";
-
-export * from "./us-services";

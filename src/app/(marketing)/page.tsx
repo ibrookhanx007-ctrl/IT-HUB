@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
 import { Hero } from "@/components/sections/hero";
 import { ServicesGrid } from "@/components/sections/services-grid";
-import { UsServicesGrid } from "@/components/sections/us-services-grid";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { Process } from "@/components/sections/process";
 import { AboutPreview } from "@/components/sections/about-preview";
@@ -25,7 +24,6 @@ export default function Home() {
       <Hero />
       <AboutPreview />
       <ServicesGrid />
-      <UsServicesGrid />
       <WhyChooseUs />
       <Process />
       <CtaBand />

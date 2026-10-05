@@ -1,8 +1,6 @@
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
-import { usServices } from "@/content/us-services";
-import { usCorporateContent } from "@/content/us-corporate";
-import type { Service, FaqItem, BreadcrumbItem, UsService } from "@/types";
+import type { Service, FaqItem, BreadcrumbItem } from "@/types";
 
 // Plain schema.org objects — rendered via <JsonLd> (components/ui/json-ld.tsx).
 // https://schema.org/LocalBusiness
@@ -23,45 +21,15 @@ export function getOrganizationSchema() {
       addressRegion: siteConfig.contact.address.region,
       addressCountry: "PK",
     },
-    makesOffer: [
-      ...services.map((service) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: service.title,
-          description: service.shortDescription,
-          url: `${siteConfig.url}/services/${service.slug}`,
-        },
-      })),
-      ...usServices.map((service) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: service.title,
-          description: service.shortDescription,
-          url: `${siteConfig.url}/${usCorporateContent.slug}/${service.slug}`,
-        },
-      })),
-    ],
-  };
-}
-
-export function getUsServiceSchema(service: UsService) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.title,
-    description: service.shortDescription,
-    provider: {
-      "@type": "LocalBusiness",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "United States",
-    },
-    url: `${siteConfig.url}/${usCorporateContent.slug}/${service.slug}`,
+    makesOffer: services.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.shortDescription,
+        url: `${siteConfig.url}/services/${service.slug}`,
+      },
+    })),
   };
 }
 
@@ -99,7 +67,7 @@ export function getBreadcrumbSchema(items: BreadcrumbItem[]) {
 }
 
 // https://schema.org/FAQPage
-export function getFaqSchema(items: Pick<FaqItem, "question" | "answer">[]) {
+export function getFaqSchema(items: FaqItem[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

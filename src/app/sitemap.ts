@@ -2,19 +2,12 @@ import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
-import { usServices } from "@/content/us-services";
-import { usCorporateContent } from "@/content/us-corporate";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: siteConfig.url, changeFrequency: "monthly", priority: 1 },
     {
       url: `${siteConfig.url}/services`,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/${usCorporateContent.slug}`,
       changeFrequency: "monthly",
       priority: 0.9,
     },
@@ -36,11 +29,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const usServicePages: MetadataRoute.Sitemap = usServices.map((service) => ({
-    url: `${siteConfig.url}/${usCorporateContent.slug}/${service.slug}`,
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
-  return [...staticPages, ...servicePages, ...usServicePages];
+  return [...staticPages, ...servicePages];
 }

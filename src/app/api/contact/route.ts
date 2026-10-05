@@ -3,8 +3,6 @@ import type { NextRequest } from "next/server";
 
 import { contactFormSchema } from "@/lib/validations/contact";
 import { services } from "@/content/services";
-import { usServices } from "@/content/us-services";
-import { usCorporateContent } from "@/content/us-corporate";
 import { sendContactEmail } from "@/lib/email";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
@@ -61,10 +59,8 @@ export async function POST(request: NextRequest) {
   }
 
   const { name, email, phone, service, message } = result.data;
-  const usService = usServices.find((item) => item.slug === service);
-  const serviceTitle = usService
-    ? `${usCorporateContent.emailTitlePrefix}${usService.title}`
-    : (services.find((item) => item.slug === service)?.title ?? service);
+  const serviceTitle =
+    services.find((item) => item.slug === service)?.title ?? service;
 
   try {
     await sendContactEmail({ name, email, phone, serviceTitle, message });

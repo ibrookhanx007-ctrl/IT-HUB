@@ -1,28 +1,12 @@
 import { z } from "zod";
 
 import { services } from "@/content/services";
-import { usServices } from "@/content/us-services";
 
-export const serviceSlugs = [...services, ...usServices].map(
-  (service) => service.slug,
-);
+const serviceSlugs = services.map((service) => service.slug);
 
 // Loosely validates Pakistani phone numbers (mobile or landline): an
 // optional +92/0 prefix, then 9-11 digits, tolerant of spaces and dashes.
 const pakistaniPhoneRegex = /^(\+92|0)[\s-]?\d{2,4}[\s-]?\d{6,8}$/;
-
-// US Corporate Services inquiries often come from outside Pakistan, so
-// also accept international numbers: a "+", then digits with common
-// separators, 8-15 digits in total (the E.164 maximum is 15).
-const internationalPhoneRegex = /^\+[\d\s().-]{7,20}$/;
-
-function isValidPhone(value: string) {
-  if (pakistaniPhoneRegex.test(value)) return true;
-  const digitCount = value.replace(/\D/g, "").length;
-  return (
-    internationalPhoneRegex.test(value) && digitCount >= 8 && digitCount <= 15
-  );
-}
 
 // Shared by the client form (UX only) and the API route (source of
 // truth) — the server re-validates every submission against this same
@@ -39,8 +23,8 @@ export const contactFormSchema = z.object({
     .trim()
     .optional()
     .refine(
-      (value) => !value || isValidPhone(value),
-      "Enter a valid phone number, including the country code if outside Pakistan.",
+      (value) => !value || pakistaniPhoneRegex.test(value),
+      "Enter a valid Pakistani phone number.",
     ),
   service: z
     .string()

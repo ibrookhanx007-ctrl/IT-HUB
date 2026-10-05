@@ -6,6 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
+import { services } from "@/content/services";
 import { contactFormLabels } from "@/content/pages";
 import {
   contactFormSchema,
@@ -15,14 +16,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { ContactServiceSelect } from "@/components/sections/contact-service-select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-interface ContactFormProps {
-  /** Service slug to preselect (already validated by the page). */
-  defaultService?: string;
-}
-
-function ContactForm({ defaultService = "" }: ContactFormProps) {
+function ContactForm() {
   const {
     control,
     register,
@@ -35,7 +37,7 @@ function ContactForm({ defaultService = "" }: ContactFormProps) {
       name: "",
       email: "",
       phone: "",
-      service: defaultService,
+      service: "",
       message: "",
       honeypot: "",
     },
@@ -139,12 +141,25 @@ function ContactForm({ defaultService = "" }: ContactFormProps) {
           control={control}
           name="service"
           render={({ field }) => (
-            <ContactServiceSelect
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              invalid={!!errors.service}
-            />
+            <Select value={field.value} onValueChange={field.onChange}>
+              <SelectTrigger
+                id="service"
+                aria-invalid={!!errors.service}
+                aria-describedby={errors.service ? "service-error" : undefined}
+                onBlur={field.onBlur}
+              >
+                <SelectValue
+                  placeholder={contactFormLabels.servicePlaceholder}
+                />
+              </SelectTrigger>
+              <SelectContent>
+                {services.map((service) => (
+                  <SelectItem key={service.slug} value={service.slug}>
+                    {service.title}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           )}
         />
         {errors.service && (

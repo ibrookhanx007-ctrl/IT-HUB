@@ -10,8 +10,6 @@ import { Section } from "@/components/ui/section";
 import { Icon } from "@/components/ui/icon";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { AnimateIn } from "@/components/ui/animate-in";
-import { UsServicesGrid } from "@/components/sections/us-services-grid";
-import { UsCta } from "@/components/sections/us-cta";
 
 const CATEGORIES: ServiceCategory[] = ["IT & Digital Services", "Tax Services"];
 
@@ -80,9 +78,6 @@ export default function ServicesPage() {
           </Section>
         );
       })}
-
-      <UsServicesGrid />
-      <UsCta />
     </>
   );
 }
