@@ -6,7 +6,6 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
-import { services } from "@/content/services";
 import { contactFormLabels } from "@/content/pages";
 import {
   contactFormSchema,
@@ -16,15 +15,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { ContactServiceSelect } from "@/components/sections/contact-service-select";
 
-function ContactForm() {
+interface ContactFormProps {
+  /** Service slug to preselect (already validated by the page). */
+  defaultService?: string;
+}
+
+function ContactForm({ defaultService = "" }: ContactFormProps) {
   const {
     control,
     register,
@@ -37,7 +35,7 @@ function ContactForm() {
       name: "",
       email: "",
       phone: "",
-      service: "",
+      service: defaultService,
       message: "",
       honeypot: "",
     },
@@ -141,25 +139,12 @@ function ContactForm() {
           control={control}
           name="service"
           render={({ field }) => (
-            <Select value={field.value} onValueChange={field.onChange}>
-              <SelectTrigger
-                id="service"
-                aria-invalid={!!errors.service}
-                aria-describedby={errors.service ? "service-error" : undefined}
-                onBlur={field.onBlur}
-              >
-                <SelectValue
-                  placeholder={contactFormLabels.servicePlaceholder}
-                />
-              </SelectTrigger>
-              <SelectContent>
-                {services.map((service) => (
-                  <SelectItem key={service.slug} value={service.slug}>
-                    {service.title}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <ContactServiceSelect
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              invalid={!!errors.service}
+            />
           )}
         />
         {errors.service && (

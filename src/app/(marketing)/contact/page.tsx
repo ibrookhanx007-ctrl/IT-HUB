@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { z } from "zod";
 
 import { siteConfig } from "@/content/site";
 import { contactPageIntro, contactFieldLabels } from "@/content/pages";
 import { isPlaceholder } from "@/lib/utils";
+import { serviceSlugs } from "@/lib/validations/contact";
 import { STAGGER_STEP_SECONDS } from "@/lib/animations";
 import { Section } from "@/components/ui/section";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -18,7 +20,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function ContactPage() {
+// `?service=<slug>` preselects a service (the US Corporate Services CTAs
+// use it). Validated against the known slugs; anything else is ignored.
+const serviceParamSchema = z.enum(serviceSlugs as [string, ...string[]]);
+
+export default async function ContactPage(props: PageProps<"/contact">) {
+  const { service } = await props.searchParams;
+  const parsedService = serviceParamSchema.safeParse(service);
+  const defaultService = parsedService.success ? parsedService.data : undefined;
+
   const { address, phone, email, hours } = siteConfig.contact;
   const hasStreet = !isPlaceholder(address.line1);
   const hasPhone = !isPlaceholder(phone);
@@ -84,7 +94,7 @@ export default function ContactPage() {
         </AnimateIn>
 
         <AnimateIn delay={STAGGER_STEP_SECONDS}>
-          <ContactForm />
+          <ContactForm defaultService={defaultService} />
         </AnimateIn>
       </Section>
 

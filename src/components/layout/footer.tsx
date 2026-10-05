@@ -3,6 +3,8 @@ import Image from "next/image";
 
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
+import { usServices } from "@/content/us-services";
+import { usCorporateContent } from "@/content/us-corporate";
 import { isPlaceholder } from "@/lib/utils";
 import { Section } from "@/components/ui/section";
 
@@ -44,6 +46,26 @@ function Footer() {
               <li key={service.slug}>
                 <Link
                   href={`/services/${service.slug}`}
+                  className="text-small rounded-sm text-ink-secondary hover:text-ink-primary focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                >
+                  {service.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h3 className="text-small mt-4 font-semibold tracking-wide text-ink-primary uppercase">
+            <Link
+              href={`/${usCorporateContent.slug}`}
+              className="rounded-sm hover:text-gold-ink focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+            >
+              {usCorporateContent.heading}
+            </Link>
+          </h3>
+          <ul className="flex flex-col gap-2">
+            {usServices.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/${usCorporateContent.slug}/${service.slug}`}
                   className="text-small rounded-sm text-ink-secondary hover:text-ink-primary focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
                 >
                   {service.title}
